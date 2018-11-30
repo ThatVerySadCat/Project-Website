@@ -22,6 +22,12 @@ namespace Project___Website
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/poppermin").Include(
+                "~/Scripts/umd/popper.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryslim").Include(
+                "~/Scripts/jquery-3.3.1.slim.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
