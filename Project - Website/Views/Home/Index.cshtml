@@ -1,3 +1,54 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+
+@section Scripts{
+    @Scripts.Render("/Unity/Build/UnityLoader.js")
+    @Scripts.Render("/Scripts/Index.js")
+}
+
+@section Styles{
+    @Styles.Render("/Content/Index.css")
+    }
+
+<div class="row">
+    <div class="col-sm-2">
+        <div class="row">
+            <div class="col-sm-12">
+                <h5 class="text-sm-center">Global Leaderboard</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">User 1</li>
+                    <li class="list-group-item">User 2</li>
+                    <li class="list-group-item">User 3</li>
+                    <li class="list-group-item">User 4</li>
+                    <li class="list-group-item">User 5</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div id="gameContainer"></div>
+    </div>
+    <div class="col-sm-2">
+        <div class="row">
+            <div class="col-sm-12">
+                <h5 class="text-sm-center">Personal Leaderboard</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Score 1</li>
+                    <li class="list-group-item">Score 2</li>
+                    <li class="list-group-item">Score 3</li>
+                    <li class="list-group-item">Score 4</li>
+                    <li class="list-group-item">Score 5</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -22,3 +22,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* Give the row for the navbar a small amount of margin on the bottom */
+.navbar-row{
+    margin-bottom:30px;
+}

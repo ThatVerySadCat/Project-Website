@@ -9,11 +9,37 @@
 </head>
 <body>
     <div class="container body-content">
+        <!-- Title Row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="text-sm-center">Thingy</h1>
+            </div>
+        </div>
+        <!-- Navbar Row -->
+        <div class="row navbar-row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav col-sm-12">
+                            <li class="nav-item active col-sm-3">
+                                <a class="nav-link text-sm-center" href="#">Home<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item col-sm-3">
+                                <a class="nav-link text-sm-center" href="#">Leaderboards</a>
+                            </li>
+                            <li class="nav-item col-sm-3">
+                                <a class="nav-link text-sm-center" href="#">Bestiary</a>
+                            </li>
+                            <li class="nav-item col-sm-3">
+                                <a class="nav-link text-sm-center" href="#">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
@@ -21,5 +47,6 @@
     @Scripts.Render("~/bundles/jqueryslim")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("styles", required: false)
 </body>
 </html>
