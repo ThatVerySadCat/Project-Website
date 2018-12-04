@@ -16,14 +16,14 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.spacing{
+    margin-bottom:20px;
 }
 
-/* Give the row for the navbar a small amount of margin on the bottom */
-.navbar-row{
-    margin-bottom:30px;
+.navbar{
+    height:25px !important;
+}
+
+#gameContainer {
+    background: none !important;
 }

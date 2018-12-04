@@ -13,6 +13,16 @@ namespace Project___Website.Controllers
             return View();
         }
 
+        public ActionResult Leaderboards()
+        {
+            return View();
+        }
+
+        public ActionResult Bestiary()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Bestiary";
+}
+
+@section Scripts{
+    @Scripts.Render("/Unity/Build/UnityLoader.js")
+    @Scripts.Render("/Scripts/Bestiary.js")
+    }
+
+@section Styles{
+    @Styles.Render("/Content/Bestiary.css")
+    }
+
+<div class="row">
+    <!-- Enemy Information -->
+    <div class="card col-sm-8">
+        <div class="card-body">
+            <h5 class="card-title">Enemy 1</h5>
+            <a class="card-text user-text" href="#">User 1</a>
+            <hr />
+            <div class="col-sm-12">
+                <div id="gameContainer" hidden></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Bar & Enemy List-->
+    <div class="flex-grow-1"></div>
+    <div class="card col-sm-3">
+        <div class="card-body">
+            <!-- Search Bar -->
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enemy/User Name..." />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">Search</button>
+                </div>
+            </div>
+
+            <div class="spacing"></div>
+
+            <!-- The list of enemies and their creator users -->
+            <div class="list-group list-group-flush list-set-height">
+                <a class="list-group-item list-group-item-action active" href="#">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h6>Enemy 1</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <b>User 1</b>
+                        </div>
+                    </div>
+                </a>
+                <a class="list-group-item list-group-item-action">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h6>Enemy 2</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <b class="user-text" href="#">User 2</b>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

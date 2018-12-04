@@ -12,23 +12,26 @@
         <!-- Title Row -->
         <div class="row">
             <div class="col-sm-12">
-                <h1 class="text-sm-center">Thingy</h1>
+                <h3 class="text-sm-center">Thingy</h3>
             </div>
         </div>
+
+        <div class="spacing"></div>
+
         <!-- Navbar Row -->
-        <div class="row navbar-row">
+        <div class="row">
             <div class="col-sm-12">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav col-sm-12">
                             <li class="nav-item active col-sm-3">
-                                <a class="nav-link text-sm-center" href="#">Home<span class="sr-only">(current)</span></a>
+                                <a class="nav-link text-sm-center" href="~/Home/Index">Home<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item col-sm-3">
-                                <a class="nav-link text-sm-center" href="#">Leaderboards</a>
+                                <a class="nav-link text-sm-center" href="~/Home/Leaderboards">Leaderboards</a>
                             </li>
                             <li class="nav-item col-sm-3">
-                                <a class="nav-link text-sm-center" href="#">Bestiary</a>
+                                <a class="nav-link text-sm-center" href="~/Home/Bestiary">Bestiary</a>
                             </li>
                             <li class="nav-item col-sm-3">
                                 <a class="nav-link text-sm-center" href="#">Login</a>
@@ -38,6 +41,8 @@
                 </nav>
             </div>
         </div>
+
+        <div class="spacing"></div>
 
         @RenderBody()
     </div>

@@ -135,6 +135,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Bestiary.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -156,12 +157,14 @@
     <Content Include="Content\fontawesome\v4-shims.css" />
     <Content Include="Content\fontawesome\v4-shims.min.css" />
     <Content Include="Content\Index.css" />
+    <Content Include="Content\Leaderboards.css" />
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Bestiary.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -267,6 +270,8 @@
     <Content Include="Unity\Build\Game - WebGL.json" />
     <Content Include="Unity\Build\Game - WebGL.wasm.code.unityweb" />
     <Content Include="Unity\Build\Game - WebGL.wasm.framework.unityweb" />
+    <Content Include="Views\Home\Leaderboards.cshtml" />
+    <Content Include="Views\Home\Bestiary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
