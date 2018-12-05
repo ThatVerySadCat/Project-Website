@@ -2,6 +2,10 @@
     ViewBag.Title = "Leaderboards";
 }
 
+@section Styles{
+    @Styles.Render("/Content/Leaderboards.css")
+    }
+
 <!-- Leaderboard Buttons -->
 <div class="row">
     <div class="flex-grow-1"></div>
@@ -19,9 +23,6 @@
     <div class="flex-grow-1"></div>
     <div class="input-group col-sm-8">
         <input type="text" class="form-control" placeholder="Username..." />
-        <div class="input-group-append">
-            <button class="btn btn-primary" type="button">Search</button>
-        </div>
     </div>
     <div class="flex-grow-1"></div>
 </div>
@@ -30,68 +31,89 @@
 
 <!-- Leaderboard -->
 <div class="row">
-    <div class="col-sm-12">
-        <ul class="list-group list-group-flush text-sm-center">
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <a href="#">#1 - User 1</a>
-                    </div>
+    <div class="flex-grow-1"></div>
+    <div class="card col-sm-5 leaderboard">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="list-group list-group-flush text-sm-center">
+                        <li class="list-group-item number-one-position">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a href="/Home/UserInfo">#1 - User 1</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p>100 Points</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item number-two-position">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a href="/Home/UserInfo">#2 - User 2</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p>90 Points</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item number-three-position">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a href="/Home/UserInfo">#3 - User 3</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p>70 Points</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a href="/Home/UserInfo">#4 - User 4</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p>50 Points</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a href="/Home/UserInfo">#5 - User 5</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p>30 Points</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a href="/Home/UserInfo">#6 - User 6</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p>20 Points</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p>100 Points</p>
-                    </div>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <a href="#">#2 - User 2</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p>90 Points</p>
-                    </div>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <a href="#">#3 - User 3</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p>70 Points</p>
-                    </div>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <a href="#">#4 - User 4</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p>50 Points</p>
-                    </div>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <a href="#">#5 - User 5</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p>30 Points</p>
-                    </div>
-                </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
+
+    <div class="flex-grow-1"></div>
 </div>

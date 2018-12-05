@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Index";
 }
 
 @section Scripts{
@@ -13,6 +13,7 @@
 
 <div class="spacing"></div>
 
+<!-- Game Row -->
 <div class="row">
     <div class="col-sm-12">
         <div id="gameContainer"></div>
@@ -21,20 +22,28 @@
 
 <div class="spacing"></div>
 
+<!-- Leaderboard Rows -->
 <div class="row">
-    <div class="col-sm-3">
+    <!-- Global Leaderboard (left) -->
+    <div class="card col-sm-3">
+        <div class="card-body">
+            <!-- Global Leaderboard Title -->
             <div class="row">
                 <div class="col-sm-12">
                     <h5 class="text-sm-center">Global Leaderboard</h5>
                 </div>
-                </div>
+            </div>
+
+            <div class="spacing"></div>
+
+            <!-- Global Leaderboard Entry List -->
             <div class="row">
                 <div class="col-sm-12">
-                    <ul class="list-group list-group-flush align-content-center">
-                        <li class="list-group-item">
+                    <ul class="list-group align-content-center">
+                        <li class="list-group-item number-one-position">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a href="#">#1 - User 1</a>
+                                    <a href="/Home/UserInfo">#1 - User 1</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -43,10 +52,10 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item number-two-position">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a href="#">#2 - User 2</a>
+                                    <a href="/Home/UserInfo">#2 - User 2</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -55,10 +64,10 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item number-three-position">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a href="#">#3 - User 3</a>
+                                    <a href="/Home/UserInfo">#3 - User 3</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -70,7 +79,7 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a href="#">#4 - User 4</a>
+                                    <a href="/Home/UserInfo">#4 - User 4</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -82,7 +91,7 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a href="#">#5 - User 5</a>
+                                    <a href="/Home/UserInfo">#5 - User 5</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -95,26 +104,36 @@
                 </div>
             </div>
         </div>
+    </div>
+
     <div class="flex-grow-1"></div>
-    <div class="col-sm-3">
+
+    <!-- Personal Leaderboard (right) -->
+    <div class="card col-sm-3">
+        <div class="card-body">
+            <!-- Personal Leaderboard Title -->
             <div class="row">
                 <div class="col-sm-12">
                     <h5 class="text-sm-center">Personal Leaderboard</h5>
                 </div>
-                </div>
+            </div>
+
+            <div class="spacing"></div>
+
+            <!-- Personal Leaderboard Entry List -->
             <div class="row">
                 <div class="col-sm-12">
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group">
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-sm-2">
+                                <div class="col-sm-3">
                                     <a>#1</a>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-9">
                                     <strong>(#1)</strong>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row number-one-position">
                                 <div class="col-sm-12">
                                     <p class="text-sm-right">100 Points</p>
                                 </div>
@@ -122,10 +141,10 @@
                         </li>
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-sm-2">
+                                <div class="col-sm-3">
                                     <a>#2</a>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-9">
                                     <strong>(#4)</strong>
                                 </div>
                             </div>
@@ -137,10 +156,10 @@
                         </li>
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-sm-2">
+                                <div class="col-sm-3">
                                     <a>#3</a>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-9">
                                     <strong>(#5)</strong>
                                 </div>
                             </div>
@@ -152,10 +171,10 @@
                         </li>
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-sm-2">
+                                <div class="col-sm-3">
                                     <a>#4</a>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-9">
                                     <strong>(#6)</strong>
                                 </div>
                             </div>
@@ -167,10 +186,10 @@
                         </li>
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-sm-2">
+                                <div class="col-sm-3">
                                     <a>#5</a>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-9">
                                     <strong>(#7)</strong>
                                 </div>
                             </div>
@@ -184,4 +203,5 @@
                 </div>
             </div>
         </div>
+    </div>
 </div>

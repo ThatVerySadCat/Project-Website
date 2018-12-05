@@ -1,0 +1,8 @@
+﻿body {
+}
+
+.scroll-list {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 446px;
+}

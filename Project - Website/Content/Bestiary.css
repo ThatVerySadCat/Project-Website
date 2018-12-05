@@ -7,5 +7,6 @@
 
 .list-set-height{
     overflow:scroll;
+    overflow-x:hidden;
     height:350px;
 }

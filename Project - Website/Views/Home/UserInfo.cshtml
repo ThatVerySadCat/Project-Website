@@ -1,0 +1,219 @@
+﻿@{
+    ViewBag.Title = "User Info";
+}
+
+@section Styles{
+    @Styles.Render("/Content/UserInfo.css")
+    }
+
+<!-- Top Section -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <!-- User Name -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>User 1</h4>
+                    </div>
+                </div>
+
+                <hr />
+
+                <!-- User Highest Global Ranking-->
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p>Highest Global Leaderboard Position:</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <strong>#1</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="spacing"></div>
+
+<!-- Leaderboard and Enemy Info -->
+<div class="row">
+    <!-- Leaderboard -->
+    <div class="col-sm-5">
+        <div class="card">
+            <div class="card-body">
+                <!-- Leaderboard Title -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Personal Leaderboard</h4>
+                    </div>
+                </div>
+
+                <div class="spacing"></div>
+
+                <!-- Leaderboard Entry List -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="list-group scroll-list">
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <a>#1</a>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <strong>(#1)</strong>
+                                    </div>
+                                </div>
+                                <div class="row number-one-position">
+                                    <div class="col-sm-12">
+                                        <p class="text-sm-right">100 Points</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <a>#2</a>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <strong>(#4)</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p class="text-sm-right">50 Points</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <a>#3</a>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <strong>(#5)</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p class="text-sm-right">30 Points</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <a>#4</a>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <strong>(#6)</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p class="text-sm-right">10 Points</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <a>#5</a>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <strong>(#7)</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p class="text-sm-right">5 Points</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <a>#6</a>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <strong>(#8)</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p class="text-sm-right">4 Points</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <a>#7</a>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <strong>(#9)</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p class="text-sm-right">3 Points</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-grow-1"></div>
+
+    <!-- Enemy Info List -->
+    <div class="col-sm-5">
+        <div class="card">
+            <div class="card-body">
+                <!-- Enemy List Title -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Enemy List</h4>
+                    </div>
+                </div>
+
+                <div class="spacing"></div>
+
+                <!-- Enemy List -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="list-group scroll-list">
+                            <a class="list-group-item list-group-item-action" href="/Home/Bestiary">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h6>Enemy 1</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <b>User 1</b>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="list-group-item list-group-item-action" href="/Home/Bestiary">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h6>Enemy 3</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <b>User 1</b>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

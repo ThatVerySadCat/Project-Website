@@ -1,6 +1,15 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 20px;
     padding-bottom: 20px;
+}
+
+/* Overrides the canvas element to change the look of the UnityLoaders canvas element */
+canvas {
+    border-radius: 5px;
+}
+
+#gameContainer {
+    background: none !important;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -16,14 +25,41 @@
     white-space: normal;
 }
 
-.spacing{
-    margin-bottom:20px;
+/* Overrides the bootstrap card, list-group-item, form-control and btn classes to allow for no border radius */
+.card, .list-group-item, .btn, .form-control {
+    border-radius: 0px !important;
 }
 
-.navbar{
-    height:25px !important;
+/* Overrides the nav-link class hover function to receive an underline upon hovering */
+.nav-link:hover {
+    text-decoration: underline;
 }
 
-#gameContainer {
-    background: none !important;
+.spacing {
+    margin-bottom: 20px;
 }
+
+.spacing-small {
+    margin-bottom: 10px;
+}
+
+.number-one-position {
+    color: #D4AF37;
+}
+
+.number-two-position {
+    color: #C0C0C0;
+}
+
+.number-three-position {
+    color: #CD7F32;
+}
+
+.title {
+    font-size: 1.75rem;
+    color: black;
+}
+
+    .title:hover {
+        color: black !important;
+    }

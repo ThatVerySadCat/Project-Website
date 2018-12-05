@@ -158,6 +158,8 @@
     <Content Include="Content\fontawesome\v4-shims.min.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\Leaderboards.css" />
+    <Content Include="Content\Login.css" />
+    <Content Include="Content\UserInfo.css" />
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
@@ -227,6 +229,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\site.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -272,6 +275,8 @@
     <Content Include="Unity\Build\Game - WebGL.wasm.framework.unityweb" />
     <Content Include="Views\Home\Leaderboards.cshtml" />
     <Content Include="Views\Home\Bestiary.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\UserInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
