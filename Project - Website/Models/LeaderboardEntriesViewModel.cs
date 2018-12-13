@@ -15,11 +15,6 @@ namespace Project___Website.Models
             get;
             set;
         }
-        public List<ILeaderboardEntry> LeaderboardEntries
-        {
-            get;
-            set;
-        }
         public List<ILeaderboardEntry> PersonalLeaderboardEntries
         {
             get;
@@ -29,7 +24,6 @@ namespace Project___Website.Models
         public LeaderboardEntriesViewModel()
         {
             GlobalLeaderboardEntries = new List<ILeaderboardEntry>();
-            LeaderboardEntries = new List<ILeaderboardEntry>();
             PersonalLeaderboardEntries = new List<ILeaderboardEntry>();
         }
     }

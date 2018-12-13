@@ -34,6 +34,10 @@ p {
     white-space: normal;
 }
 
+.hidden {
+    display:none;
+}
+
 /* Adds a top margin to the first rows for login screens */
 .login-row {
     margin-top: 75px;
@@ -42,14 +46,6 @@ p {
 /* Overrides the nav-link class hover function to receive an underline upon hovering */
 .nav-link:hover {
     text-decoration: underline;
-}
-
-.spacing {
-    margin-bottom: 20px;
-}
-
-.spacing-small {
-    margin-bottom: 10px;
 }
 
 .number-one-position {
@@ -62,6 +58,14 @@ p {
 
 .number-three-position {
     color: #CD7F32;
+}
+
+.spacing {
+    margin-bottom: 20px;
+}
+
+.spacing-small {
+    margin-bottom: 10px;
 }
 
 .title {

@@ -10,38 +10,39 @@
     <div class="flex-grow-1"></div>
     <div class="card col-sm-6">
         <div class="card-body">
-            <form>
+            <form method="post">
                 <h5>Login</h5>
 
                 <div class="spacing"></div>
 
                 <!-- Enter Username -->
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Enter Username..." />
+                    <input class="form-control" type="text" placeholder="Enter Username..." name="username"/>
                 </div>
                 <!-- Enter Password -->
                 <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Enter Password..." />
+                    <input class="form-control" type="password" placeholder="Enter Password..." name="password"/>
                 </div>
 
                 <div class="spacing"></div>
 
                 <!-- Buttons -->
                 <div class="row">
-                    <div class="flex-grow-1"></div>
-
                     <!-- Login Button -->
                     <div class="col-sm-4">
                         <button class="btn btn-primary" type="submit">Login</button>
                     </div>
-                    <div class="flex-grow-1"></div>
+                    <div class="col-sm-8">
+                    </div>
+                </div>
 
+                <div class="spacing"></div>
+
+                <div class="row">
                     <!-- Register Button -->
-                    <div class="col-sm-4">
+                    <div class="col-sm-12">
                         <a class="btn btn-primary" role="button" href="/Home/Register">Register</a>
                     </div>
-
-                    <div class="flex-grow-1"></div>
                 </div>
             </form>
         </div>
