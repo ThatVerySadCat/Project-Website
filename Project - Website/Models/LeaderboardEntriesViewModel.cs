@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using LogicInterfaces;
-
 namespace Project___Website.Models
 {
     public class LeaderboardEntriesViewModel
@@ -12,7 +10,7 @@ namespace Project___Website.Models
         /// <summary>
         /// A list containing the global leaderboard entries.
         /// </summary>
-        public List<ILeaderboardEntry> GlobalLeaderboardEntries
+        public List<LeaderboardEntryViewModel> GlobalLeaderboardEntries
         {
 
             get;
@@ -21,7 +19,7 @@ namespace Project___Website.Models
         /// <summary>
         /// A list containing the personal leaderboard entries.
         /// </summary>
-        public List<ILeaderboardEntry> PersonalLeaderboardEntries
+        public List<LeaderboardEntryViewModel> PersonalLeaderboardEntries
         {
             get;
             set;
@@ -29,8 +27,8 @@ namespace Project___Website.Models
 
         public LeaderboardEntriesViewModel()
         {
-            GlobalLeaderboardEntries = new List<ILeaderboardEntry>();
-            PersonalLeaderboardEntries = new List<ILeaderboardEntry>();
+            GlobalLeaderboardEntries = new List<LeaderboardEntryViewModel>();
+            PersonalLeaderboardEntries = new List<LeaderboardEntryViewModel>();
         }
     }
 }
