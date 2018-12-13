@@ -1,4 +1,6 @@
-﻿@{
+﻿@using LogicInterfaces
+
+@{
     ViewBag.Title = "Leaderboards";
 }
 
@@ -37,6 +39,36 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="list-group list-group-flush text-sm-center">
+                        @foreach(ILeaderboardEntry iEntry in Model.LeaderboardEntries)
+                        {
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a href="/Home/UserInfo"># @iEntry.Position - @iEntry.Username</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        @if(iEntry.Position == 1)
+                                        {
+                                            <p class="number-one-position">@iEntry.Score Points</p>
+                                        }
+                                        else if(iEntry.Position == 2)
+                                        {
+                                            <p class="number-two-position">@iEntry.Score Points</p>
+                                        }
+                                        else if(iEntry.Position == 3)
+                                        {
+                                            <p class="number-three-position">@iEntry.Score Points</p>
+                                        }
+                                        else
+                                        {
+                                            <p>@iEntry.Score Points</p>
+                                        }
+                                    </div>
+                                </div>
+                            </li>
+                        }
                         <li class="list-group-item number-one-position">
                             <div class="row">
                                 <div class="col-sm-12">

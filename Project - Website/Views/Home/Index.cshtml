@@ -1,4 +1,6 @@
-﻿@{
+﻿@using LogicInterfaces
+
+@{
     ViewBag.Title = "Index";
 }
 
@@ -40,66 +42,38 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="list-group align-content-center">
-                        <li class="list-group-item number-one-position">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <a href="/Home/UserInfo">#1 - User 1</a>
+                        @foreach(ILeaderboardEntry iEntry in Model.GlobalLeaderboardEntries)
+                        {
+                            <li class="list-group-item">
+                                <!-- Username -->
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a href="/Home/UserInfo"># @iEntry.Position - @iEntry.Username</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p class="text-sm-right">100 Points</p>
+                                <!-- Scores -->
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        @if (iEntry.Position == 1)
+                                        {
+                                            <p class="text-sm-right number-one-position">@iEntry.Score Points</p>
+                                        }
+                                        else if (iEntry.Position == 2)
+                                        {
+                                            <p class="text-sm-right number-two-position">@iEntry.Score Points</p>
+                                        }
+                                        else if (iEntry.Position == 3)
+                                        {
+                                            <p class="text-sm-right number-three-position">@iEntry.Score Points</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="text-sm-right">@iEntry.Score Points</p>
+                                        }
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item number-two-position">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <a href="/Home/UserInfo">#2 - User 2</a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p class="text-sm-right">90 Points</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item number-three-position">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <a href="/Home/UserInfo">#3 - User 3</a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p class="text-sm-right">70 Points</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <a href="/Home/UserInfo">#4 - User 4</a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p class="text-sm-right">50 Points</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <a href="/Home/UserInfo">#5 - User 5</a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p class="text-sm-right">30 Points</p>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -124,81 +98,38 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <a>#1</a>
+                        @for (int i = 0; i < Model.PersonalLeaderboardEntries.Count; i++)
+                        {
+                            <li class="list-group-item">
+                                <!-- Personal Position -->
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <p># @(i + 1)</p>
+                                    </div>
                                 </div>
-                                <div class="col-sm-9">
-                                    <strong>(#1)</strong>
+                                <!-- Score -->
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        @if (Model.PersonalLeaderboardEntries[i].Position == 1)
+                                        {
+                                            <p class="text-sm-right number-one-position">@Model.PersonalLeaderboardEntries[i].Score Points</p>
+                                        }
+                                        else if (Model.PersonalLeaderboardEntries[i].Position == 2)
+                                        {
+                                            <p class="text-sm-right number-two-position">@Model.PersonalLeaderboardEntries[i].Score Points</p>
+                                        }
+                                        else if (Model.PersonalLeaderboardEntries[i].Position == 3)
+                                        {
+                                            <p class="text-sm-right number-three-position">@Model.PersonalLeaderboardEntries[i].Score Points</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="text-sm-right">@Model.PersonalLeaderboardEntries[i].Score Points</p>
+                                        }
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row number-one-position">
-                                <div class="col-sm-12">
-                                    <p class="text-sm-right">100 Points</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <a>#2</a>
-                                </div>
-                                <div class="col-sm-9">
-                                    <strong>(#4)</strong>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p class="text-sm-right">50 Points</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <a>#3</a>
-                                </div>
-                                <div class="col-sm-9">
-                                    <strong>(#5)</strong>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p class="text-sm-right">30 Points</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <a>#4</a>
-                                </div>
-                                <div class="col-sm-9">
-                                    <strong>(#6)</strong>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p class="text-sm-right">10 Points</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <a>#5</a>
-                                </div>
-                                <div class="col-sm-9">
-                                    <strong>(#7)</strong>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p class="text-sm-right">5 Points</p>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

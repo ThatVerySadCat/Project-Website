@@ -1,7 +1,2 @@
 ﻿body {
 }
-
-/* Adds a top margin to the first rows for login screens */
-.login-row {
-    margin-top: 75px;
-}
