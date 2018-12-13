@@ -10,26 +10,40 @@
     <div class="flex-grow-1"></div>
     <div class="card col-sm-6">
         <div class="card-body">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Enter Username" />
+            <form>
+                <h5>Login</h5>
+
+                <div class="spacing"></div>
+
+                <!-- Enter Username -->
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Enter Username..." />
+                </div>
+                <!-- Enter Password -->
+                <div class="form-group">
+                    <input class="form-control" type="password" placeholder="Enter Password..." />
+                </div>
+
+                <div class="spacing"></div>
+
+                <!-- Buttons -->
+                <div class="row">
+                    <div class="flex-grow-1"></div>
+
+                    <!-- Login Button -->
+                    <div class="col-sm-4">
+                        <button class="btn btn-primary" type="submit">Login</button>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <input class="form-control" type="password" placeholder="Enter Password" />
-                </div>
-            </div>
+                    <div class="flex-grow-1"></div>
 
-            <div class="spacing"></div>
+                    <!-- Register Button -->
+                    <div class="col-sm-4">
+                        <a class="btn btn-primary" role="button" href="/Home/Register">Register</a>
+                    </div>
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <button class="btn btn-primary" type="button">Login</button>
+                    <div class="flex-grow-1"></div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <div class="flex-grow-1"></div>
