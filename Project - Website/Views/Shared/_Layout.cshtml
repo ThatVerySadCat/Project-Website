@@ -31,13 +31,14 @@
                                 <a class="nav-link nav-index text-sm-center" href="~/Home/Index">Home</a>
                             </li>
                             <li class="nav-item col-sm-3">
-                                <a class="nav-link nav-leaderboards text-sm-center" href="~/Home/Leaderboards">Leaderboards</a>
+                                <a class="nav-link nav-leaderboards text-sm-center" href="~/Leaderboards/Leaderboards">Leaderboards</a>
                             </li>
                             <li class="nav-item col-sm-3">
-                                <a class="nav-link nav-bestiary text-sm-center" href="~/Home/Bestiary">Bestiary</a>
+                                <a class="nav-link nav-bestiary text-sm-center" href="~/Bestiary/Bestiary">Bestiary</a>
                             </li>
+                            <!-- TODO: Make it so that when the user is logged in it displays Account and Logout options instead of the Login option -->
                             <li class="nav-item col-sm-3">
-                                <a class="nav-link nav-login text-sm-center" href="~/Home/Login">Login</a>
+                                <a class="nav-link nav-login text-sm-center" href="~/Account/Login">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -52,7 +53,6 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/poppermin")
-    @Scripts.Render("~/bundles/jqueryslim")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/site.js")
     @RenderSection("scripts", required: false)

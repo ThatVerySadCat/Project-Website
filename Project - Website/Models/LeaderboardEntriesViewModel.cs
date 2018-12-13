@@ -9,12 +9,18 @@ namespace Project___Website.Models
 {
     public class LeaderboardEntriesViewModel
     {
+        /// <summary>
+        /// A list containing the global leaderboard entries.
+        /// </summary>
         public List<ILeaderboardEntry> GlobalLeaderboardEntries
         {
 
             get;
             set;
         }
+        /// <summary>
+        /// A list containing the personal leaderboard entries.
+        /// </summary>
         public List<ILeaderboardEntry> PersonalLeaderboardEntries
         {
             get;

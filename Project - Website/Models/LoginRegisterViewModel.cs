@@ -5,18 +5,19 @@ using System.Web;
 
 namespace Project___Website.Models
 {
-    public class LoginViewModel
+    public class LoginRegisterViewModel
     {
-        public bool HasLoginFailed
+        /// <summary>
+        /// Has an error occured?
+        /// </summary>
+        public bool HasError
         {
             get;
             set;
         }
-        public string Password
-        {
-            get;
-            set;
-        }
+        /// <summary>
+        /// The username used to login/register.
+        /// </summary>
         public string Username
         {
             get;

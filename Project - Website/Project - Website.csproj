@@ -128,12 +128,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BestiaryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeaderboardsController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LeaderboardEntriesViewModel.cs" />
-    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\LoginRegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +165,7 @@
     <Content Include="Content\Leaderboards.css" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Register.css" />
-    <Content Include="Content\UserInfo.css" />
+    <Content Include="Content\AccountInfo.css" />
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
@@ -233,6 +236,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Register.js" />
     <Content Include="Scripts\site.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
@@ -275,11 +279,11 @@
     <Content Include="Unity\Build\Game - WebGL.json" />
     <Content Include="Unity\Build\Game - WebGL.wasm.code.unityweb" />
     <Content Include="Unity\Build\Game - WebGL.wasm.framework.unityweb" />
-    <Content Include="Views\Home\Leaderboards.cshtml" />
-    <Content Include="Views\Home\Bestiary.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\UserInfo.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Leaderboards\Leaderboards.cshtml" />
+    <Content Include="Views\Bestiary\Bestiary.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\AccountInfo.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,7 +4,7 @@
 
 @section Styles{
     @Styles.Render("/Content/Login.css")
-    }
+}
 
 <div class="row login-row">
     <div class="flex-grow-1"></div>
@@ -17,31 +17,35 @@
 
                 <!-- Enter Username -->
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Enter Username..." name="username"/>
+                    <input class="form-control" type="text" placeholder="Enter Username..." name="username" value="@Model.Username" />
                 </div>
                 <!-- Enter Password -->
                 <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Enter Password..." name="password"/>
+                    <input class="form-control" type="password" placeholder="Enter Password..." name="password" />
                 </div>
 
-                <div class="spacing"></div>
+                <div class="spacing-small"></div>
 
-                <!-- Buttons -->
+                <!-- Login Button -->
                 <div class="row">
-                    <!-- Login Button -->
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                         <button class="btn btn-primary" type="submit">Login</button>
                     </div>
-                    <div class="col-sm-8">
-                    </div>
+                    @if (Model.HasLoginError)
+                    {
+                        <div class="col-sm-3">
+                            <small class="form-text text-danger">Login Failed!</small>
+                        </div>
+                    }
+                    <div class="flex-grow-1"></div>
                 </div>
 
                 <div class="spacing"></div>
 
+                <!-- Register Button -->
                 <div class="row">
-                    <!-- Register Button -->
                     <div class="col-sm-12">
-                        <a class="btn btn-primary" role="button" href="/Home/Register">Register</a>
+                        <a class="btn btn-primary" role="button" href="/Account/Register">Register</a>
                     </div>
                 </div>
             </form>

@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+@section Scripts{
+    @Scripts.Render("/Scripts/Register.js")
+    }
+
+@section Styles{
+    @Styles.Render("/Content/Register.css")
+    }
+
+<div class="row login-row">
+    <div class="flex-grow-1"></div>
+    <div class="card col-sm-6">
+        <div class="card-body">
+            <form method="post">
+                <h5>Register a new Account</h5>
+
+                <div class="spacing"></div>
+
+                <!-- Username Input -->
+                <div class="form-group">
+                    <input type="text" class="form-control username-input" placeholder="Enter Your Username Here..." name="username"/>
+                    <small class="form-text text-danger username-not-available-text" hidden>This Username is Not Available!</small>
+                    <small class="form-text text-success username-available-text" hidden>This Username is Available!</small>
+                </div>
+                <!-- Password Input -->
+                <div class="form-group">
+                    <input type="password" class="form-control password-input" placeholder="Enter Your Password Here..." name="password"/>
+                </div>
+
+                <div class="spacing"></div>
+
+                <!-- Submit Button -->
+                <div class="row">
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-primary register-btn" disabled>Register</button>
+                    </div>
+                    @if (Model.HasLoginError)
+                    {
+                        <div class="col-sm-3">
+                            <small class="form-text text-danger">Registration Failed!</small>
+                        </div>
+                    }
+                    <div class="flex-grow-1"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="flex-grow-1"></div>
+</div>
