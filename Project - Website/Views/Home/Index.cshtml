@@ -1,4 +1,4 @@
-﻿@using LogicInterfaces
+﻿@using Project___Website.Models;
 
 @{
     ViewBag.Title = "Index";
@@ -42,33 +42,33 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="list-group align-content-center">
-                        @foreach(ILeaderboardEntry iEntry in Model.GlobalLeaderboardEntries)
+                        @foreach(LeaderboardEntryViewModel entry in Model.GlobalLeaderboardEntries)
                         {
                             <li class="list-group-item">
                                 <!-- Username -->
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <a href="/Account/AccountInfo">#@iEntry.Position - @iEntry.Username</a>
+                                        <a href="/Account/AccountInfo/@entry.ID">#@entry.Position - @entry.Username</a>
                                     </div>
                                 </div>
                                 <!-- Scores -->
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        @if (iEntry.Position == 1)
+                                        @if (entry.Position == 1)
                                         {
-                                            <p class="text-sm-right number-one-position">@iEntry.Score Points</p>
+                                            <p class="text-sm-right number-one-position">@entry.Score Points</p>
                                         }
-                                        else if (iEntry.Position == 2)
+                                        else if (entry.Position == 2)
                                         {
-                                            <p class="text-sm-right number-two-position">@iEntry.Score Points</p>
+                                            <p class="text-sm-right number-two-position">@entry.Score Points</p>
                                         }
-                                        else if (iEntry.Position == 3)
+                                        else if (entry.Position == 3)
                                         {
-                                            <p class="text-sm-right number-three-position">@iEntry.Score Points</p>
+                                            <p class="text-sm-right number-three-position">@entry.Score Points</p>
                                         }
                                         else
                                         {
-                                            <p class="text-sm-right">@iEntry.Score Points</p>
+                                            <p class="text-sm-right">@entry.Score Points</p>
                                         }
                                     </div>
                                 </div>

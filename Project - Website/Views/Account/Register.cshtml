@@ -38,9 +38,9 @@
                     <div class="col-sm-2">
                         <button type="submit" class="btn btn-primary register-btn" disabled>Register</button>
                     </div>
-                    @if (Model.HasLoginError)
+                    @if (Model.HasError)
                     {
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <small class="form-text text-danger">Registration Failed!</small>
                         </div>
                     }

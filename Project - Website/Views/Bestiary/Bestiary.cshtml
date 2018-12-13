@@ -1,15 +1,17 @@
-﻿@{
+﻿@using Project___Website.Models
+
+@{
     ViewBag.Title = "Bestiary";
 }
 
 @section Scripts{
     @Scripts.Render("/Unity/Build/UnityLoader.js")
     @Scripts.Render("/Scripts/Bestiary.js")
-    }
+}
 
 @section Styles{
     @Styles.Render("/Content/Bestiary.css")
-    }
+}
 
 <div class="row">
     <!-- Enemy Information -->
@@ -30,37 +32,32 @@
         <div class="card-body">
             <!-- Search Bar -->
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enemy Name..." />
+                <input type="text" class="form-control search-bar-input" placeholder="Search Here..." />
             </div>
 
             <div class="spacing"></div>
 
             <!-- The list of enemies and their creator users -->
-            <div class="list-group list-group-flush list-set-height">
-                <a class="list-group-item list-group-item-action active" href="#">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h6>Enemy 1</h6>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <b>User 1</b>
-                        </div>
-                    </div>
-                </a>
-                <a class="list-group-item list-group-item-action">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h6>Enemy 2</h6>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <b class="user-text" href="#">User 2</b>
-                        </div>
-                    </div>
-                </a>
+            <div class="list-group list-group-flush list-set-height bestiary-list-group">
+                @for (int i = 0; i < Model.Enemies.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <button type="button" class="btn-tall list-group-item list-group-item-action enemy-btn active">
+                            <h6>@Model.Enemies[i].Name</h6>
+                            <b>@Model.Enemies[i].CreatorUsername</b>
+                            <p class="enemy-id" hidden>@Model.Enemies[i].ID</p>
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn-tall list-group-item list-group-item-action enemy-btn">
+                            <h6>@Model.Enemies[i].Name</h6>
+                            <b>@Model.Enemies[i].CreatorUsername</b>
+                            <p class="enemy-id" hidden>@Model.Enemies[i].ID</p>
+                        </button>
+                    }
+                }
             </div>
         </div>
     </div>

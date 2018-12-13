@@ -12,20 +12,20 @@ namespace Project___Website.Controllers
     {
         // An ID parameter needs to be added to allow for a specific user to be found
         [HttpGet()]
-        public ActionResult AccountInfo()
+        public ActionResult AccountInfo(int id = 0)
         {
             AccountViewModel viewModel = new AccountViewModel();
 
             // This is all sample data that should be retrieved from the database using the ID parameter
-            viewModel.Username = "User 1";
-            viewModel.PersonalEnemyList.Add(new EnemyViewModel(0, "User 1", "Enemy 1"));
-            viewModel.PersonalEnemyList.Add(new EnemyViewModel(1, "User 1", "Enemy 2"));
-            viewModel.PersonalEnemyList.Add(new EnemyViewModel(2, "User 2", "Enemy 3"));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(1, 100, "User 1"));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(6, 5, "User 1"));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(7, 5, "User 1"));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(8, 3, "User 1"));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(9, 2, "User 1"));
+            viewModel.Username = "User " + id;
+            viewModel.PersonalEnemyList.Add(new EnemyViewModel(0, "User " + id, "Enemy 1"));
+            viewModel.PersonalEnemyList.Add(new EnemyViewModel(1, "User " + id, "Enemy 2"));
+            viewModel.PersonalEnemyList.Add(new EnemyViewModel(2, "User " + id, "Enemy 3"));
+            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 1, 100, "User " + id));
+            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 6, 5, "User " + id));
+            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 7, 5, "User " + id));
+            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 8, 3, "User " + id));
+            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 9, 2, "User " + id));
 
             return View(viewModel);
         }

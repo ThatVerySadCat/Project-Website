@@ -8,6 +8,14 @@ namespace Project___Website.Models
     public class LeaderboardEntryViewModel
     {
         /// <summary>
+        /// The id belonging to the user who made the entry.
+        /// </summary>
+        public int ID
+        {
+            get;
+            set;
+        }
+        /// <summary>
         /// The position of the entry on the global leaderboard.
         /// </summary>
         public int Position
@@ -37,11 +45,13 @@ namespace Project___Website.Models
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="_id">The id belonging to the user who made the entry.</param>
         /// <param name="_position">The position of the entry on the global leaderboard.</param>
         /// <param name="_score">The score ascociated with the entry.</param>
         /// <param name="_username">The name of the user who made the entry.</param>
-        public LeaderboardEntryViewModel(int _position, int _score, string _username)
+        public LeaderboardEntryViewModel(int _id, int _position, int _score, string _username)
         {
+            ID = _id;
             Position = _position;
             Score = _score;
             Username = _username;

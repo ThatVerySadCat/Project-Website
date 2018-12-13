@@ -48,6 +48,10 @@
       <Project>{095f4b13-4b24-4ff6-96b6-c9e69bf767c0}</Project>
       <Name>LogicInterfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Structs\Structs.csproj">
+      <Project>{fa5576ff-8070-4618-87f8-966a9bcbcca9}</Project>
+      <Name>Structs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
