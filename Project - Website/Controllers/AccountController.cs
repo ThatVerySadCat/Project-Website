@@ -18,14 +18,14 @@ namespace Project___Website.Controllers
 
             // This is all sample data that should be retrieved from the database using the ID parameter
             viewModel.Username = "User " + id;
-            viewModel.PersonalEnemyList.Add(new EnemyViewModel(0, "User " + id, "Enemy 1"));
-            viewModel.PersonalEnemyList.Add(new EnemyViewModel(1, "User " + id, "Enemy 2"));
-            viewModel.PersonalEnemyList.Add(new EnemyViewModel(2, "User " + id, "Enemy 3"));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 1, 100, "User " + id));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 6, 5, "User " + id));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 7, 5, "User " + id));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 8, 3, "User " + id));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 9, 2, "User " + id));
+            viewModel.PersonalEnemyList.Add(new EnemyViewModel(id, 0, "User " + id, "Enemy 1"));
+            viewModel.PersonalEnemyList.Add(new EnemyViewModel(id, 1, "User " + id, "Enemy 2"));
+            viewModel.PersonalEnemyList.Add(new EnemyViewModel(id, 2, "User " + id, "Enemy 3"));
+            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(id, 1, 100, "User " + id));
+            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(id, 6, 5, "User " + id));
+            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(id, 7, 5, "User " + id));
+            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(id, 8, 3, "User " + id));
+            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(id, 9, 2, "User " + id));
 
             return View(viewModel);
         }

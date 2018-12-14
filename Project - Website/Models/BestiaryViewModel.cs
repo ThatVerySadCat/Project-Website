@@ -5,15 +5,20 @@ using System.Web;
 
 namespace Project___Website.Models
 {
-    public class EnemiesViewModel
+    public class BestiaryViewModel
     {
+        public EnemyViewModel ActiveEnemy
+        {
+            get;
+            set;
+        }
         public List<EnemyViewModel> Enemies
         {
             get;
             set;
         }
 
-        public EnemiesViewModel()
+        public BestiaryViewModel()
         {
             Enemies = new List<EnemyViewModel>();
         }

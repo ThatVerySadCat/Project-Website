@@ -7,6 +7,11 @@ namespace Project___Website.Models
 {
     public class EnemyViewModel
     {
+        public int CreatorID
+        {
+            get;
+            set;
+        }
         public int ID
         {
             get;
@@ -25,8 +30,9 @@ namespace Project___Website.Models
 
         public EnemyViewModel() { }
 
-        public EnemyViewModel(int _id, string _creatorUsername, string _name)
+        public EnemyViewModel(int _creatorID, int _id, string _creatorUsername, string _name)
         {
+            CreatorID = _creatorID;
             ID = _id;
             CreatorUsername = _creatorUsername;
             Name = _name;

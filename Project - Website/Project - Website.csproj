@@ -136,7 +136,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModel.cs" />
-    <Compile Include="Models\EnemiesViewModel.cs" />
+    <Compile Include="Models\BestiaryViewModel.cs" />
     <Compile Include="Models\EnemyViewModel.cs" />
     <Compile Include="Models\LeaderboardEntriesViewModel.cs" />
     <Compile Include="Models\LeaderboardEntryViewModel.cs" />

@@ -12,5 +12,6 @@
 }
 
 .btn-tall{
-    padding-bottom:65px;
+    height: 75px !important;
+    padding-bottom: 65px;
 }

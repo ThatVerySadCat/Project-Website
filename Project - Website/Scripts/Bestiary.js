@@ -1,8 +1,14 @@
 ﻿var gameInstance;
-var intervalTimer;
+var initializeTimer;
 var hasInitialized = false;
 
+var enemyName;
+var enemyCreatorName;
+
 $(document).ready(function () {
+    enemyName = $(".enemy-name");
+    enemyCreatorName = $(".enemy-creator-name");
+
     gameInstance = UnityLoader.instantiate("gameContainer", "/Unity/Build/Game - WebGL.json",
         {
             Module:
@@ -13,7 +19,7 @@ $(document).ready(function () {
             }
         });
 
-    intervalTimer = setInterval(CheckForInitialize, 100);
+    initializeTimer = setInterval(CheckForInitialize, 1000);
 });
 
 $(".search-bar-input").keyup(function () {
@@ -27,7 +33,7 @@ $(".search-bar-input").keyup(function () {
 function CheckForInitialize() {
     if (hasInitialized) {
         Setup();
-        clearInterval(intervalTimer);
+        clearInterval(initializeTimer);
     }
 }
 
@@ -40,4 +46,31 @@ function Setup() {
 $(".enemy-btn").click(function () {
     var enemyID = parseInt($(this).children(".enemy-id").text());
     gameInstance.SendMessage("Enemy Spawn Manager", "ForceSpawnEnemy", enemyID);
+
+    var localBtn = $(this);
+
+    $.ajax({
+        url: "SwitchActiveEnemy",
+        type: "POST",
+        dataType: "json",
+        data: { id: enemyID },
+        success: function (viewModel) {
+            SetActiveEnemyInformation(viewModel);
+            SwitchActiveEnemyBtn(localBtn);
+        },
+        error: function (error) {
+            console.log("error");
+        }
+    });
 });
+
+function SwitchActiveEnemyBtn(newActiveEnemyBtn) {
+    $(".active").removeClass("active");
+    $(newActiveEnemyBtn).addClass("active");
+}
+
+function SetActiveEnemyInformation(viewModel) {
+    $(enemyName).text(viewModel.Name);
+    $(enemyCreatorName).text(viewModel.CreatorUsername);
+    $(enemyCreatorName).attr("href", "/Account/AccountInfo/" + viewModel.CreatorID);
+}

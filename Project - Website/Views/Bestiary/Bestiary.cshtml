@@ -17,8 +17,8 @@
     <!-- Enemy Information -->
     <div class="card col-sm-8">
         <div class="card-body">
-            <h5 class="card-title">Enemy 1</h5>
-            <a class="card-text user-text" href="/Account/AccountInfo">User 1</a>
+            <h5 class="card-title enemy-name">-</h5>
+            <a class="card-text user-text enemy-creator-name" href="#">-</a>
             <hr />
             <div class="col-sm-12">
                 <div id="gameContainer" hidden></div>
@@ -26,8 +26,9 @@
         </div>
     </div>
 
-    <!-- Search Bar & Enemy List-->
     <div class="flex-grow-1"></div>
+
+    <!-- Search Bar & Enemy List-->
     <div class="card col-sm-3">
         <div class="card-body">
             <!-- Search Bar -->
@@ -39,24 +40,13 @@
 
             <!-- The list of enemies and their creator users -->
             <div class="list-group list-group-flush list-set-height bestiary-list-group">
-                @for (int i = 0; i < Model.Enemies.Count; i++)
+                @foreach (EnemyViewModel enemy in Model.Enemies)
                 {
-                    if (i == 0)
-                    {
-                        <button type="button" class="btn-tall list-group-item list-group-item-action enemy-btn active">
-                            <h6>@Model.Enemies[i].Name</h6>
-                            <b>@Model.Enemies[i].CreatorUsername</b>
-                            <p class="enemy-id" hidden>@Model.Enemies[i].ID</p>
-                        </button>
-                    }
-                    else
-                    {
-                        <button type="button" class="btn-tall list-group-item list-group-item-action enemy-btn">
-                            <h6>@Model.Enemies[i].Name</h6>
-                            <b>@Model.Enemies[i].CreatorUsername</b>
-                            <p class="enemy-id" hidden>@Model.Enemies[i].ID</p>
-                        </button>
-                    }
+                    <button type="button" class="btn-tall list-group-item list-group-item-action enemy-btn">
+                        <h6>@enemy.Name</h6>
+                        <b>@enemy.CreatorUsername</b>
+                        <p class="enemy-id" hidden>@enemy.ID</p>
+                    </button>
                 }
             </div>
         </div>
