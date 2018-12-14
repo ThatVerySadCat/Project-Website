@@ -28,18 +28,30 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav col-sm-12">
                             <li class="nav-item col-sm-3">
-                                <a class="nav-link nav-index text-sm-center" href="~/Home/Index">Home</a>
+                                <a class="nav-link nav-index text-sm-center" href="/Home/Index">Home</a>
                             </li>
                             <li class="nav-item col-sm-3">
-                                <a class="nav-link nav-leaderboards text-sm-center" href="~/Leaderboards/Leaderboards">Leaderboards</a>
+                                <a class="nav-link nav-leaderboards text-sm-center" href="/Leaderboards/Leaderboards">Leaderboards</a>
                             </li>
                             <li class="nav-item col-sm-3">
-                                <a class="nav-link nav-bestiary text-sm-center" href="~/Bestiary/Bestiary">Bestiary</a>
+                                <a class="nav-link nav-bestiary text-sm-center" href="/Bestiary/Bestiary">Bestiary</a>
                             </li>
                             <!-- TODO: Make it so that when the user is logged in it displays Account and Logout options instead of the Login option -->
-                            <li class="nav-item col-sm-3">
-                                <a class="nav-link nav-login text-sm-center" href="~/Account/Login">Login</a>
-                            </li>
+                            @if (Session["UserID"] != null)
+                            {
+                                <li class="nav-item col-sm-2">
+                                    <a class="nav-link nav-account-info-@Session["UserID"] text-sm-center" href="/Account/AccountInfo/@Session["UserID"]">@Session["UserName"]</a>
+                                </li>
+                                <li class="nav-item col-sm-1">
+                                    <a class="nav-link text-sm-center" href="/Account/Logout">(Logout)</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item col-sm-3">
+                                    <a class="nav-link nav-login text-sm-center" href="/Account/Login">Login</a>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </nav>

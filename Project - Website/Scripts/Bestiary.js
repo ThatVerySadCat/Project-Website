@@ -35,7 +35,15 @@ function CheckForInitialize() {
         $("#gameContainer").attr("hidden", false);
 
         clearInterval(initializeTimer);
+        
+        setTimeout(SpawnEnemy, 3000);
     }
+}
+
+// Spawn the enemy with the ID belonging to the currently active element.
+function SpawnEnemy() {
+    var activeEnemyID = parseInt($(".active").children(".enemy-id").text());
+    gameInstance.SendMessage("Enemy Spawn Manager", "ForceSpawnEnemy", activeEnemyID);
 }
 
 // Uses the value in the search bar to filter through the bestiary-list-group items.
@@ -55,7 +63,7 @@ $(".enemy-btn").click(function () {
     var localBtn = $(this);
 
     $.ajax({
-        url: "SwitchActiveEnemy",
+        url: "/Bestiary/SwitchActiveEnemy",
         type: "POST",
         dataType: "json",
         data: { id: enemyID },
@@ -72,7 +80,7 @@ $(".enemy-btn").click(function () {
 // Sets the correct text on the page to the values found in the given viewModel.
 function SetActiveEnemyInformation(viewModel) {
     $(enemyName).text(viewModel.Name);
-    $(enemyCreatorName).text(viewModel.CreatorUsername);
+    $(enemyCreatorName).text(viewModel.CreatorName);
     $(enemyCreatorName).attr("href", "/Account/AccountInfo/" + viewModel.CreatorID);
 }
 

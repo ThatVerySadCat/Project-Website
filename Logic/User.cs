@@ -11,14 +11,11 @@ namespace Logic
     public class User : IUser
     {
         // HARD CODED VALUES HERE! TO BE REPLACED LATER!
-        private static User hardCodedUser1 = new User(0, "TestName");
-        private static User hardCodedUser2 = new User(1, "AppleMan");
-        private static User hardCodedUser3 = new User(2, "EAPFan69");
-        private static User hardCodedUser4 = new User(3, "Faker");
-
-        private const int hardCodedID = 0;
-        private const string hardCodedUsername = "TestName";
-        private const string hardCodedPassword = "TestPass";
+        private static User[] hardCodedUsers = new User[] {
+         new User(0, "TestName", "TestPass"),
+         new User(1, "AppleMan", "ApplePass"),
+         new User(2, "EAPFan69", "EAPPass"),
+         new User(3, "Faker", "FakerPass") };
         // HARD CODED VALUES HERE! TO BE REPLACED LATER!
 
         /// <summary>
@@ -54,6 +51,12 @@ namespace Logic
             set;
         }
 
+        /// <summary>
+        /// This is a temporary value to store the password for a user.
+        /// DO NOT USE THIS WHEN ACTUALLY WORKING WITH PASSWORDS AS IT IS NOT NECESARY!
+        /// </summary>
+        private string password = "";
+
         public User()
         {
             ID = -1;
@@ -67,11 +70,14 @@ namespace Logic
         /// </summary>
         /// <param name="_id"></param>
         /// <param name="_name"></param>
-        public User(int _id, string _name)
+        /// <param name="_password"></param>
+        public User(int _id, string _name, string _password)
         {
             ID = _id;
             Users = new List<IUser>();
             Name = _name;
+
+            password = _password;
         }
 
         /// <summary>
@@ -81,13 +87,15 @@ namespace Logic
         public bool GetAllUsers()
         {
             // Get all user data from the DAL here and put it in the Users list
-            Users = new List<IUser>(3);
-            Users.Add(hardCodedUser1);
-            Users.Add(hardCodedUser2);
-            Users.Add(hardCodedUser3);
-            Users.Add(hardCodedUser4);
+            if (hardCodedUsers.Length > 0)
+            {
+                Users = new List<IUser>(3);
+                Users.AddRange(hardCodedUsers);
 
-            return true;
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -97,27 +105,10 @@ namespace Logic
         /// <returns></returns>
         public bool GetUserDataByID(int id)
         {
-            if(hardCodedUser1.ID == id)
+            IUser iUser = hardCodedUsers.Where(user => user.ID == id).FirstOrDefault();
+            if(iUser != null)
             {
-                SelectedUser = new User(hardCodedUser1.ID, hardCodedUser1.Name);
-
-                return true;
-            }
-            else if(hardCodedUser2.ID == id)
-            {
-                SelectedUser = new User(hardCodedUser2.ID, hardCodedUser2.Name);
-
-                return true;
-            }
-            else if(hardCodedUser3.ID == id)
-            {
-                SelectedUser = new User(hardCodedUser3.ID, hardCodedUser3.Name);
-
-                return true;
-            }
-            else if(hardCodedUser4.ID == id)
-            {
-                SelectedUser = new User(hardCodedUser4.ID, hardCodedUser4.Name);
+                SelectedUser = iUser;
 
                 return true;
             }
@@ -133,12 +124,13 @@ namespace Logic
         public bool IsUsernameAvailable(string username)
         {
             // Check if the given username is already taken in the database
-            if(username == hardCodedUser1.Name || username == hardCodedUser2.Name || username == hardCodedUser3.Name || username == hardCodedUser4.Name)
+            bool usernameUnique = hardCodedUsers.Where(user => user.Name == username).Count() == 0;
+            if(usernameUnique)
             {
-                return false;
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         /// <summary>
@@ -150,10 +142,11 @@ namespace Logic
         public bool Login(string username, string password)
         {
             // Check here if the given username/password are valid by using the DAL
-            if(username == hardCodedUsername && password == hardCodedPassword)
+            IUser loggedInUser = hardCodedUsers.Where(user => user.Name == username && user.password == password).FirstOrDefault();
+            if(loggedInUser != null)
             {
-                ID = hardCodedID;
-                Name = hardCodedUsername;
+                ID = loggedInUser.ID;
+                Name = loggedInUser.Name;
 
                 return true;
             }
@@ -181,7 +174,8 @@ namespace Logic
         /// <returns></returns>
         public bool Register(string username, string password)
         {
-            if(username != hardCodedUser1.Name && username != hardCodedUser2.Name && username != hardCodedUser3.Name && username != hardCodedUser4.Name)
+            IUser iUser = hardCodedUsers.Where(user => user.Name == username).FirstOrDefault();
+            if(iUser == null)
             {
                 return true;
             }

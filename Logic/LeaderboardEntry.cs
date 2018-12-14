@@ -11,19 +11,18 @@ namespace Logic
     public class LeaderboardEntry : ILeaderboardEntry
     {
         // HARD CODED DATA! PLEASE REMOVE ASAP!
-        private static LeaderboardEntry hardCodedEntry1 = new LeaderboardEntry(1, 0, 100, "TestName");
-        private static LeaderboardEntry hardCodedEntry2 = new LeaderboardEntry(2, 0, 50, "TestName");
-        private static LeaderboardEntry hardCodedEntry3 = new LeaderboardEntry(3, 0, 25, "TestName");
-        private static LeaderboardEntry hardCodedEntry4 = new LeaderboardEntry(4, 0, 12, "TestName");
-        private static LeaderboardEntry hardCodedEntry5 = new LeaderboardEntry(5, 0, 11, "TestName");
-        private static LeaderboardEntry hardCodedEntry6 = new LeaderboardEntry(6, 0, 10, "TestName");
-        private static LeaderboardEntry hardCodedEntry7 = new LeaderboardEntry(7, 0, 9, "TestName");
-
-        private static LeaderboardEntry hardCodedEntry8 = new LeaderboardEntry(8, 1, 8, "AppleMan");
-        private static LeaderboardEntry hardCodedEntry9 = new LeaderboardEntry(9, 1, 4, "AppleMan");
-        private static LeaderboardEntry hardCodedEntry10 = new LeaderboardEntry(10, 1, 2, "AppleMan");
-
-        private static LeaderboardEntry hardCodedEntry11 = new LeaderboardEntry(11, 2, 1, "EAPFan69");
+        private static LeaderboardEntry[] hardCodedEntries = new LeaderboardEntry[] {
+            new LeaderboardEntry(1, 0, 100, "TestName"),
+            new LeaderboardEntry(2, 0, 50, "TestName"),
+            new LeaderboardEntry(3, 0, 25, "TestName"),
+            new LeaderboardEntry(4, 1, 20, "AppleMan"),
+            new LeaderboardEntry(5, 1, 15, "AppleMan"),
+            new LeaderboardEntry(6, 1, 10, "AppleMan"),
+            new LeaderboardEntry(7, 2, 9, "EAPFan69"),
+            new LeaderboardEntry(8, 0, 5, "TestName"),
+            new LeaderboardEntry(9, 0, 4, "TestName"),
+            new LeaderboardEntry(10, 0, 3, "TestName"),
+            new LeaderboardEntry(11, 0, 2, "TestName") };
         // HARD CODED DATA! PLEASE REMOVE ASAP!
 
         /// <summary>
@@ -92,38 +91,32 @@ namespace Logic
         }
 
         /// <summary>
+        /// Fills the GlobalEntries property with all leaderboard entries and returns true. Returns false if there are no entries.
+        /// </summary>
+        /// <returns></returns>
+        public bool GetAllGlobalLeaderboardEntries()
+        {
+            if (hardCodedEntries.Length > 0)
+            {
+                GlobalEntries = new List<ILeaderboardEntry>();
+                GlobalEntries.AddRange(hardCodedEntries);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Gets the leaderboard entries belonging to the user with the given userID and returns true. Returns false if there are no entries.
         /// </summary>
         /// <param name="userID">The ID of the user whose leaderboard entries to find.</param>
         /// <returns></returns>
-        public bool GetLeaderboardEntriesByUserID(int userID)
+        public bool GetAllPersonalLeaderboardEntries(int userID)
         {
-            if(hardCodedEntry1.ID == userID)
+            if (hardCodedEntries.Length > 0)
             {
-                PersonalEntries = new List<ILeaderboardEntry>(7);
-                PersonalEntries.Add(hardCodedEntry1);
-                PersonalEntries.Add(hardCodedEntry2);
-                PersonalEntries.Add(hardCodedEntry3);
-                PersonalEntries.Add(hardCodedEntry4);
-                PersonalEntries.Add(hardCodedEntry5);
-                PersonalEntries.Add(hardCodedEntry6);
-                PersonalEntries.Add(hardCodedEntry7);
-
-                return true;
-            }
-            else if(hardCodedEntry8.ID == userID)
-            {
-                PersonalEntries = new List<ILeaderboardEntry>(3);
-                PersonalEntries.Add(hardCodedEntry8);
-                PersonalEntries.Add(hardCodedEntry9);
-                PersonalEntries.Add(hardCodedEntry10);
-
-                return true;
-            }
-            else if(hardCodedEntry11.ID == userID)
-            {
-                PersonalEntries = new List<ILeaderboardEntry>(1);
-                PersonalEntries.Add(hardCodedEntry11);
+                PersonalEntries = hardCodedEntries.Where(leaderboardEntry => leaderboardEntry.ID == userID).ToList<ILeaderboardEntry>();
 
                 return true;
             }

@@ -32,7 +32,7 @@ $(".username-input").keyup(function () {
     var usernameVal = $(this).val();
     if (usernameVal.length > 0) {
         $.ajax({
-            url: "IsUsernameAvailable",
+            url: "/Account/IsUsernameAvailable",
             type: "POST",
             dataType: "json",
             data: { username: usernameVal },

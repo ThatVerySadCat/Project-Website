@@ -7,6 +7,11 @@ namespace Project___Website.Models
 {
     public class AccountViewModel
     {
+        public int ID
+        {
+            get;
+            set;
+        }
         /// <summary>
         /// A list of enemies whom the requested user has created.
         /// </summary>

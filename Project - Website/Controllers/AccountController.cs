@@ -28,9 +28,10 @@ namespace Project___Website.Controllers
                 AccountViewModel viewModel = new AccountViewModel();
 
                 IUser selectedUser = iUser.SelectedUser;
+                viewModel.ID = selectedUser.ID;
                 viewModel.Username = selectedUser.Name;
 
-                bool personalEntriesFound = iLeaderboardEntry.GetLeaderboardEntriesByUserID(selectedUser.ID);
+                bool personalEntriesFound = iLeaderboardEntry.GetAllPersonalLeaderboardEntries(selectedUser.ID);
                 if (personalEntriesFound)
                 {
                     viewModel.PersonalLeaderboardEntries = new List<LeaderboardEntryViewModel>(iLeaderboardEntry.PersonalEntries.Count);
@@ -81,16 +82,27 @@ namespace Project___Website.Controllers
             // Hand username and password over to the Logic layer who checks if the data is correct (together with the DAL)
             bool loginSuccess = iUser.Login(username, password);
 
-            if (!loginSuccess)
+            if(loginSuccess)
             {
-                LoginRegisterViewModel viewModel = new LoginRegisterViewModel();
-                viewModel.Username = username;
-                viewModel.HasError = true;
+                Session["UserID"] = iUser.ID;
+                Session["UserName"] = iUser.Name;
 
-                return View(viewModel);
+                return RedirectToAction("AccountInfo", "Account", new { iUser.ID });
             }
 
-            return RedirectToAction("AccountInfo", "Account", new { iUser.ID });
+            LoginRegisterViewModel viewModel = new LoginRegisterViewModel();
+            viewModel.Username = username;
+            viewModel.HasError = true;
+
+            return View(viewModel);
+        }
+
+        [HttpGet()]
+        public ActionResult Logout()
+        {
+            Session["UserID"] = null;
+
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpGet()]

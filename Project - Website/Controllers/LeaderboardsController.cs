@@ -6,31 +6,48 @@ using System.Web.Mvc;
 
 using Project___Website.Models;
 
+using LogicFactory;
+using LogicInterfaces;
+
 namespace Project___Website.Controllers
 {
     public class LeaderboardsController : Controller
     {
+        private ILeaderboardEntry iLeaderboardEntry = LeaderboardEntryFactory.CreateLeaderboardInterface();
+
         [HttpGet()]
         public ActionResult Leaderboards()
         {
+            int userID = -1;
+            if(Session["UserID"] != null)
+            {
+                userID = (int)Session["UserID"];
+            }
+
             LeaderboardEntriesViewModel viewModel = new LeaderboardEntriesViewModel();
+            viewModel.GlobalLeaderboardEntries = new List<LeaderboardEntryViewModel>();
+            viewModel.PersonalLeaderboardEntries = new List<LeaderboardEntryViewModel>();
 
-            // Get Leaderboard Entries because they are the default display setting
-            viewModel.GlobalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 1, 100, "User 1"));
-            viewModel.GlobalLeaderboardEntries.Add(new LeaderboardEntryViewModel(1, 2, 50, "User 2"));
-            viewModel.GlobalLeaderboardEntries.Add(new LeaderboardEntryViewModel(2, 3, 25, "User 3"));
-            viewModel.GlobalLeaderboardEntries.Add(new LeaderboardEntryViewModel(3, 4, 12, "User 4"));
-            viewModel.GlobalLeaderboardEntries.Add(new LeaderboardEntryViewModel(4, 5, 6, "User 5"));
-            viewModel.GlobalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 6, 5, "User 1"));
-            viewModel.GlobalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 7, 4, "User 1"));
-            viewModel.GlobalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 8, 3, "User 1"));
+            bool globalLeaderboardEntries = iLeaderboardEntry.GetAllGlobalLeaderboardEntries();
+            if(globalLeaderboardEntries)
+            {
+                foreach(ILeaderboardEntry entry in iLeaderboardEntry.GlobalEntries)
+                {
+                    viewModel.GlobalLeaderboardEntries.Add(new LeaderboardEntryViewModel(entry.ID, entry.GlobalPosition, entry.Score, entry.Username));
+                }
 
-            // Get Leaderboard Entries for when they need to be activated
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 1, 100, "User 1"));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 6, 5, "User 1"));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 7, 5, "User 1"));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 8, 3, "User 1"));
-            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(0, 9, 2, "User 1"));
+                if (userID >= 0)
+                {
+                    bool personalLeaderboardEntries = iLeaderboardEntry.GetAllPersonalLeaderboardEntries(userID);
+                    if(personalLeaderboardEntries)
+                    {
+                        foreach(ILeaderboardEntry entry in iLeaderboardEntry.PersonalEntries)
+                        {
+                            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(entry.ID, entry.GlobalPosition, entry.Score, entry.Username));
+                        }
+                    }
+                }
+            }
 
             return View(viewModel);
         }

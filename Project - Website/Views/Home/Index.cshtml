@@ -32,7 +32,7 @@
             <!-- Global Leaderboard Title -->
             <div class="row">
                 <div class="col-sm-12">
-                    <h5 class="text-sm-center">Global Leaderboard</h5>
+                    <h5 class="text-sm-center">Global Top 5</h5>
                 </div>
             </div>
 
@@ -42,33 +42,38 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="list-group align-content-center">
-                        @foreach(LeaderboardEntryViewModel entry in Model.GlobalLeaderboardEntries)
+                        @for (int i = 0; i < Model.GlobalLeaderboardEntries.Count; i++)
                         {
+                            if(i >= 5)
+                            {
+                                break;
+                            }
+
                             <li class="list-group-item">
                                 <!-- Username -->
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <a href="/Account/AccountInfo/@entry.ID">#@entry.Position - @entry.Username</a>
+                                        <a href="/Account/AccountInfo/@Model.GlobalLeaderboardEntries[i].ID">#@Model.GlobalLeaderboardEntries[i].Position - @Model.GlobalLeaderboardEntries[i].Username</a>
                                     </div>
                                 </div>
                                 <!-- Scores -->
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        @if (entry.Position == 1)
+                                        @if (Model.GlobalLeaderboardEntries[i].Position == 1)
                                         {
-                                            <p class="text-sm-right number-one-position">@entry.Score Points</p>
+                                            <p class="text-sm-right number-one-position">@Model.GlobalLeaderboardEntries[i].Score Points</p>
                                         }
-                                        else if (entry.Position == 2)
+                                        else if (Model.GlobalLeaderboardEntries[i].Position == 2)
                                         {
-                                            <p class="text-sm-right number-two-position">@entry.Score Points</p>
+                                            <p class="text-sm-right number-two-position">@Model.GlobalLeaderboardEntries[i].Score Points</p>
                                         }
-                                        else if (entry.Position == 3)
+                                        else if (Model.GlobalLeaderboardEntries[i].Position == 3)
                                         {
-                                            <p class="text-sm-right number-three-position">@entry.Score Points</p>
+                                            <p class="text-sm-right number-three-position">@Model.GlobalLeaderboardEntries[i].Score Points</p>
                                         }
                                         else
                                         {
-                                            <p class="text-sm-right">@entry.Score Points</p>
+                                            <p class="text-sm-right">@Model.GlobalLeaderboardEntries[i].Score Points</p>
                                         }
                                     </div>
                                 </div>
@@ -88,7 +93,7 @@
             <!-- Personal Leaderboard Title -->
             <div class="row">
                 <div class="col-sm-12">
-                    <h5 class="text-sm-center">Personal Leaderboard</h5>
+                    <h5 class="text-sm-center">Personal Top 5</h5>
                 </div>
             </div>
 
@@ -100,11 +105,22 @@
                     <ul class="list-group">
                         @for (int i = 0; i < Model.PersonalLeaderboardEntries.Count; i++)
                         {
+                            if(i >= 5)
+                            {
+                                break;
+                            }
+
                             <li class="list-group-item">
                                 <!-- Personal Position -->
                                 <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-12">
                                         <p>#@(i + 1)</p>
+                                    </div>
+                                </div>
+                                <!-- Global Position -->
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <b>#@Model.PersonalLeaderboardEntries[i].Position</b>
                                     </div>
                                 </div>
                                 <!-- Score -->

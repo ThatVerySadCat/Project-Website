@@ -26,7 +26,7 @@ namespace Project___Website.Models
         /// <summary>
         /// The username of the user who made the enemy.
         /// </summary>
-        public string CreatorUsername
+        public string CreatorName
         {
             get;
             set;
@@ -47,13 +47,13 @@ namespace Project___Website.Models
         /// </summary>
         /// <param name="_creatorID">The ID of the user who made the enemy.</param>
         /// <param name="_id">The ID of the enemy.</param>
-        /// <param name="_creatorUsername">The username of the user who made the enemy.</param>
+        /// <param name="_creatorName">The username of the user who made the enemy.</param>
         /// <param name="_name">The name of the enemy.</param>
-        public EnemyViewModel(int _creatorID, int _id, string _creatorUsername, string _name)
+        public EnemyViewModel(int _creatorID, int _id, string _creatorName, string _name)
         {
             CreatorID = _creatorID;
             ID = _id;
-            CreatorUsername = _creatorUsername;
+            CreatorName = _creatorName;
             Name = _name;
         }
     }
