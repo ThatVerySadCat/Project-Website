@@ -120,9 +120,9 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="list-group scroll-list">
-                            @foreach(EnemyViewModel enemy in Model.PersonalEnemyList)
+                            @foreach(EnemyViewModel enemy in Model.PersonalEnemies)
                             {
-                                <a class="list-group-item list-group-item-action" href="/Bestiary/Bestiary">
+                                <a class="list-group-item list-group-item-action" href="/Bestiary/Bestiary/@enemy.ID">
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <h6>@enemy.Name</h6>

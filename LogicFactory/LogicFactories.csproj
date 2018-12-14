@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnemyFactory.cs" />
+    <Compile Include="LeaderboardEntryFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LogicInterfaces\LogicInterfaces.csproj">

@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structs", "Structs\Structs.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicInterfaces", "LogicInterfaces\LogicInterfaces.csproj", "{095F4B13-4B24-4FF6-96B6-C9E69BF767C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicFactory", "LogicFactory\LogicFactory.csproj", "{A97D40AA-F33D-48AC-BDE7-DED6400BEF9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicFactories", "LogicFactory\LogicFactories.csproj", "{A97D40AA-F33D-48AC-BDE7-DED6400BEF9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

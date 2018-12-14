@@ -304,9 +304,9 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LogicFactory\LogicFactory.csproj">
+    <ProjectReference Include="..\LogicFactory\LogicFactories.csproj">
       <Project>{a97d40aa-f33d-48ac-bde7-ded6400bef9d}</Project>
-      <Name>LogicFactory</Name>
+      <Name>LogicFactories</Name>
     </ProjectReference>
     <ProjectReference Include="..\LogicInterfaces\LogicInterfaces.csproj">
       <Project>{095f4b13-4b24-4ff6-96b6-c9e69bf767c0}</Project>

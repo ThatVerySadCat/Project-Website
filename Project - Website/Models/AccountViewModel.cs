@@ -10,7 +10,7 @@ namespace Project___Website.Models
         /// <summary>
         /// A list of enemies whom the requested user has created.
         /// </summary>
-        public List<EnemyViewModel> PersonalEnemyList
+        public List<EnemyViewModel> PersonalEnemies
         {
             get;
             set;
@@ -32,10 +32,6 @@ namespace Project___Website.Models
             set;
         }
 
-        public AccountViewModel()
-        {
-            PersonalEnemyList = new List<EnemyViewModel>();
-            PersonalLeaderboardEntries = new List<LeaderboardEntryViewModel> ();
-        }
+        public AccountViewModel() { }
     }
 }

@@ -10,11 +10,11 @@ namespace Project___Website.Controllers
 {
     public class BestiaryController : Controller
     {
-        BestiaryViewModel viewModel = new BestiaryViewModel();
-
         [HttpGet()]
-        public ActionResult Bestiary()
+        public ActionResult Bestiary(int id = 0)
         {
+            BestiaryViewModel viewModel = new BestiaryViewModel();
+
             viewModel.Enemies.Add(new EnemyViewModel(0, 0, "User 1", "Enemy 1"));
             viewModel.Enemies.Add(new EnemyViewModel(0, 1, "User 1", "Enemy 2"));
             viewModel.Enemies.Add(new EnemyViewModel(0, 2, "User 1", "Enemy 3"));
