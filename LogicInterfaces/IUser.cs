@@ -17,22 +17,6 @@ namespace LogicInterfaces
             set;
         }
         /// <summary>
-        /// A currently selected user.
-        /// </summary>
-        IUser SelectedUser
-        {
-            get;
-            set;
-        }
-        /// <summary>
-        /// A list of users.
-        /// </summary>
-        List<IUser> Users
-        {
-            get;
-            set;
-        }
-        /// <summary>
         /// The name of the user.
         /// </summary>
         string Name
@@ -40,18 +24,7 @@ namespace LogicInterfaces
             get;
             set;
         }
-
-        /// <summary>
-        /// Fills the Users property with all users and then returns true. Returns false if no users could be found.
-        /// </summary>
-        /// <returns></returns>
-        bool GetAllUsers();
-        /// <summary>
-        /// Sets the SelectedUser property to the user with the given id and return true. Returns false if the user could not be found.
-        /// </summary>
-        /// <param name="id">The ID of the user to find.</param>
-        /// <returns></returns>
-        bool GetUserDataByID(int id);
+        
         /// <summary>
         /// Returns true if the given username is available. Returns false if an user with the given username already exists.
         /// </summary>

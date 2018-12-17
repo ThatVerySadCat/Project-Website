@@ -1,4 +1,4 @@
-﻿@using Project___Website.Models
+﻿@using LogicInterfaces
 
 @{
     ViewBag.Title = "Leaderboards";
@@ -47,34 +47,34 @@
                 <div class="col-sm-12">
                     <!-- Global List Group -->
                     <ul class="list-group list-group-flush text-sm-center global-list-group">
-                            @foreach (LeaderboardEntryViewModel entry in Model.GlobalLeaderboardEntries)
+                            @foreach (ILeaderboardEntry iEntry in Model.GlobalLeaderboardEntries)
                             {
                                 <!-- Global Entries -->
                                 <li class="list-group-item">
                                     <!-- Global Position -->
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <a href="/Account/AccountInfo/@entry.ID">#@entry.Position - @entry.Username</a>
+                                            <a href="/Account/AccountInfo/@iEntry.ID">#@iEntry.GlobalPosition - @iEntry.Username</a>
                                         </div>
                                     </div>
                                     <!-- Score -->
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            @if (entry.Position == 1)
+                                            @if (iEntry.GlobalPosition == 1)
                                             {
-                                                <p class="number-one-position">@entry.Score Points</p>
+                                                <p class="number-one-position">@iEntry.Score Points</p>
                                             }
-                                            else if (entry.Position == 2)
+                                            else if (iEntry.GlobalPosition == 2)
                                             {
-                                                <p class="number-two-position">@entry.Score Points</p>
+                                                <p class="number-two-position">@iEntry.Score Points</p>
                                             }
-                                            else if (entry.Position == 3)
+                                            else if (iEntry.GlobalPosition == 3)
                                             {
-                                                <p class="number-three-position">@entry.Score Points</p>
+                                                <p class="number-three-position">@iEntry.Score Points</p>
                                             }
                                             else
                                             {
-                                                <p>@entry.Score Points</p>
+                                                <p>@iEntry.Score Points</p>
                                             }
                                         </div>
                                     </div>
@@ -96,15 +96,15 @@
                                 <!-- Score -->
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        @if (Model.PersonalLeaderboardEntries[i].Position == 1)
+                                        @if (Model.PersonalLeaderboardEntries[i].GlobalPosition == 1)
                                         {
                                             <p class="number-one-position">@Model.PersonalLeaderboardEntries[i].Score Points</p>
                                         }
-                                        else if (Model.PersonalLeaderboardEntries[i].Position == 2)
+                                        else if (Model.PersonalLeaderboardEntries[i].GlobalPosition == 2)
                                         {
                                             <p class="number-two-position">@Model.PersonalLeaderboardEntries[i].Score Points</p>
                                         }
-                                        else if (Model.PersonalLeaderboardEntries[i].Position == 3)
+                                        else if (Model.PersonalLeaderboardEntries[i].GlobalPosition == 3)
                                         {
                                             <p class="number-three-position">@Model.PersonalLeaderboardEntries[i].Score Points</p>
                                         }

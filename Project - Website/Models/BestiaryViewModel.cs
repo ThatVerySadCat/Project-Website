@@ -3,30 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+using LogicInterfaces;
+
 namespace Project___Website.Models
 {
     public class BestiaryViewModel
     {
         /// <summary>
-        /// The currently active enemy's view model.
+        /// A single IEnemy interface.
         /// </summary>
-        public EnemyViewModel ActiveEnemy
-        {
-            get;
-            set;
-        }
+        public IEnemy SelectedEnemy { get; set; }
         /// <summary>
-        /// A list of all enemy view models.
+        /// A list of IEnemy interfaces.
         /// </summary>
-        public List<EnemyViewModel> Enemies
-        {
-            get;
-            set;
-        }
-
-        public BestiaryViewModel()
-        {
-            Enemies = new List<EnemyViewModel>();
-        }
+        public List<IEnemy> Enemies { get; set; }
     }
 }

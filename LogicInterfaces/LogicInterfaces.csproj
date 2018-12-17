@@ -42,8 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IEnemy.cs" />
+    <Compile Include="IEnemyCollection.cs" />
+    <Compile Include="ILeaderboard.cs" />
     <Compile Include="ILeaderboardEntry.cs" />
     <Compile Include="IUser.cs" />
+    <Compile Include="IUserCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

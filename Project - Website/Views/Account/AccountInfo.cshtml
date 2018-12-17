@@ -1,7 +1,7 @@
-﻿@using Project___Website.Models
+﻿@using LogicInterfaces;
 
 @{
-    ViewBag.Title = "Account-Info-" + Model.ID;
+    ViewBag.Title = "Account-Info-" + Model.User.ID;
 }
 
 @section Styles{
@@ -16,7 +16,7 @@
                 <!-- User Name -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4>@Model.Username</h4>
+                        <h4>@Model.User.Name</h4>
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
                     <div class="col-sm-2">
                         @if (Model.PersonalLeaderboardEntries.Count > 0)
                         {
-                            <strong>#@Model.PersonalLeaderboardEntries[0].Position - @Model.PersonalLeaderboardEntries[0].Score Points</strong>
+                            <strong>#@Model.PersonalLeaderboardEntries[0].GlobalPosition - @Model.PersonalLeaderboardEntries[0].Score Points</strong>
                         }
                         else
                         {
@@ -74,15 +74,15 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            @if (Model.PersonalLeaderboardEntries[i].Position == 1)
+                                            @if (Model.PersonalLeaderboardEntries[i].GlobalPosition == 1)
                                             {
                                                 <p class="text-sm-right number-one-position">@Model.PersonalLeaderboardEntries[i].Score Points</p>
                                             }
-                                            else if (Model.PersonalLeaderboardEntries[i].Position == 2)
+                                            else if (Model.PersonalLeaderboardEntries[i].GlobalPosition == 2)
                                             {
                                                 <p class="text-sm-right number-two-position">@Model.PersonalLeaderboardEntries[i].Score Points</p>
                                             }
-                                            else if (Model.PersonalLeaderboardEntries[i].Position == 3)
+                                            else if (Model.PersonalLeaderboardEntries[i].GlobalPosition == 3)
                                             {
                                                 <p class="text-sm-right number-three-position">@Model.PersonalLeaderboardEntries[i].Score Points</p>
                                             }
@@ -120,17 +120,17 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="list-group scroll-list">
-                            @foreach(EnemyViewModel enemy in Model.PersonalEnemies)
+                            @foreach(IEnemy iEnemy in Model.PersonalEnemies)
                             {
-                                <a class="list-group-item list-group-item-action" href="/Bestiary/Bestiary/@enemy.ID">
+                                <a class="list-group-item list-group-item-action" href="/Bestiary/Bestiary/@iEnemy.ID">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <h6>@enemy.Name</h6>
+                                            <h6>@iEnemy.Name</h6>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <b>@enemy.CreatorName</b>
+                                            <b>@iEnemy.CreatorName</b>
                                         </div>
                                     </div>
                                 </a>

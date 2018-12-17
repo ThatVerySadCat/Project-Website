@@ -5,20 +5,20 @@ using System.Web;
 
 namespace Project___Website.Models
 {
-    public class LoginRegisterViewModel
+    public class RegisterViewModel
     {
         /// <summary>
-        /// Has an error occured?
+        /// Has the register attempt failed?
         /// </summary>
-        public bool HasError
+        public bool HasFailed
         {
             get;
             set;
         }
         /// <summary>
-        /// The username used to login/register.
+        /// The name used to attempt a register.
         /// </summary>
-        public string Username
+        public string Name
         {
             get;
             set;

@@ -13,36 +13,27 @@ namespace Project___Website.Controllers
 {
     public class BestiaryController : Controller
     {
-        private IEnemy iEnemy = EnemyFactory.CreateEnemyInterface();
+        private IEnemyCollection iEnemyCollection = EnemyCollectionFactory.CreateEnemyCollectionInterface();
 
         [HttpGet()]
         public ActionResult Bestiary(int id = 0)
         {
             BestiaryViewModel viewModel = new BestiaryViewModel();
 
-            bool enemyFound = iEnemy.GetEnemyByID(id);
+            bool enemyFound = iEnemyCollection.GetEnemyByID(id);
             if(enemyFound)
             {
-                IEnemy selectedEnemy = iEnemy.SelectedEnemy;
-                viewModel.ActiveEnemy = new EnemyViewModel(selectedEnemy.CreatorID, selectedEnemy.ID, selectedEnemy.CreatorName, selectedEnemy.Name);
-            }
-            else
-            {
-                viewModel.ActiveEnemy = new EnemyViewModel(-1, -1, "-", "-");
+                viewModel.SelectedEnemy = iEnemyCollection.SelectedEnemy;
             }
 
-            bool enemiesFound = iEnemy.GetAllEnemies();
+            bool enemiesFound = iEnemyCollection.GetAllEnemies();
             if(enemiesFound)
             {
-                viewModel.Enemies = new List<EnemyViewModel>(iEnemy.Enemies.Count);
-                foreach (IEnemy enemy in iEnemy.Enemies)
-                {
-                    viewModel.Enemies.Add(new EnemyViewModel(enemy.CreatorID, enemy.ID, enemy.CreatorName, enemy.Name));
-                }
+                viewModel.Enemies = iEnemyCollection.Enemies;
             }
             else
             {
-                viewModel.Enemies = new List<EnemyViewModel>();
+                viewModel.Enemies = new List<IEnemy>();
             }
 
             return View(viewModel);
@@ -51,15 +42,14 @@ namespace Project___Website.Controllers
         [HttpPost()]
         public JsonResult SwitchActiveEnemy(int id)
         {
-            bool enemyFound = iEnemy.GetEnemyByID(id);
+            bool enemyFound = iEnemyCollection.GetEnemyByID(id);
             if(enemyFound)
             {
-                IEnemy selectedEnemy = iEnemy.SelectedEnemy;
-                return Json(new EnemyViewModel(selectedEnemy.CreatorID, selectedEnemy.ID, selectedEnemy.CreatorName, selectedEnemy.Name), JsonRequestBehavior.AllowGet);
+                return Json(iEnemyCollection.SelectedEnemy, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json(new EnemyViewModel(-1, -1, "-", "-"), JsonRequestBehavior.AllowGet);
+                return Json(null, JsonRequestBehavior.AllowGet);
             }
         }
     }

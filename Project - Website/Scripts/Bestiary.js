@@ -4,6 +4,7 @@ var gameInstance;
 var initializeTimer;
 // Has the game client finished initializing?
 var hasInitialized = false;
+var hasSpawned = false;
 
 // The element which displays the currently active enemy name on the page.
 var enemyName;
@@ -44,6 +45,7 @@ function CheckForInitialize() {
 function SpawnEnemy() {
     var activeEnemyID = parseInt($(".active").children(".enemy-id").text());
     gameInstance.SendMessage("Enemy Spawn Manager", "ForceSpawnEnemy", activeEnemyID);
+    hasSpawned = true;
 }
 
 // Uses the value in the search bar to filter through the bestiary-list-group items.
@@ -57,31 +59,33 @@ $(".search-bar-input").keyup(function () {
 // Gives the enemy ID asociated with the pressed button to the Unity game client.
 // Then the controller is asked for the correct data using ajax which is then used to set the correct elements.
 $(".enemy-btn").click(function () {
-    var enemyID = parseInt($(this).children(".enemy-id").text());
-    gameInstance.SendMessage("Enemy Spawn Manager", "ForceSpawnEnemy", enemyID);
+    if (hasSpawned) {
+        var enemyID = parseInt($(this).children(".enemy-id").text());
+        gameInstance.SendMessage("Enemy Spawn Manager", "ForceSpawnEnemy", enemyID);
 
-    var localBtn = $(this);
+        var localBtn = $(this);
 
-    $.ajax({
-        url: "/Bestiary/SwitchActiveEnemy",
-        type: "POST",
-        dataType: "json",
-        data: { id: enemyID },
-        success: function (viewModel) {
-            SetActiveEnemyInformation(viewModel);
-            SwitchActiveEnemyBtn(localBtn);
-        },
-        error: function (error) {
-            console.log("error");
-        }
-    });
+        $.ajax({
+            url: "/Bestiary/SwitchActiveEnemy",
+            type: "POST",
+            dataType: "json",
+            data: { id: enemyID },
+            success: function (iEnemy) {
+                SetActiveEnemyInformation(iEnemy);
+                SwitchActiveEnemyBtn(localBtn);
+            },
+            error: function (error) {
+                console.log("error");
+            }
+        });
+    }
 });
 
 // Sets the correct text on the page to the values found in the given viewModel.
-function SetActiveEnemyInformation(viewModel) {
-    $(enemyName).text(viewModel.Name);
-    $(enemyCreatorName).text(viewModel.CreatorName);
-    $(enemyCreatorName).attr("href", "/Account/AccountInfo/" + viewModel.CreatorID);
+function SetActiveEnemyInformation(iEnemy) {
+    $(enemyName).text(iEnemy.Name);
+    $(enemyCreatorName).text(iEnemy.CreatorName);
+    $(enemyCreatorName).attr("href", "/Account/AccountInfo/" + iEnemy.CreatorID);
 }
 
 // Switches the currently active button to be inactive and set the given newActiveEnemyBtn as active.

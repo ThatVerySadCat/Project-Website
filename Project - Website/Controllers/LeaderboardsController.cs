@@ -13,7 +13,7 @@ namespace Project___Website.Controllers
 {
     public class LeaderboardsController : Controller
     {
-        private ILeaderboardEntry iLeaderboardEntry = LeaderboardEntryFactory.CreateLeaderboardInterface();
+        private ILeaderboard iLeaderboard = LeaderboardFactory.CreateLeaderboardInterface();
 
         [HttpGet()]
         public ActionResult Leaderboards()
@@ -24,27 +24,21 @@ namespace Project___Website.Controllers
                 userID = (int)Session["UserID"];
             }
 
-            LeaderboardEntriesViewModel viewModel = new LeaderboardEntriesViewModel();
-            viewModel.GlobalLeaderboardEntries = new List<LeaderboardEntryViewModel>();
-            viewModel.PersonalLeaderboardEntries = new List<LeaderboardEntryViewModel>();
+            LeaderboardsViewModel viewModel = new LeaderboardsViewModel();
+            viewModel.GlobalLeaderboardEntries = new List<ILeaderboardEntry>();
+            viewModel.PersonalLeaderboardEntries = new List<ILeaderboardEntry>();
 
-            bool globalLeaderboardEntries = iLeaderboardEntry.GetAllGlobalLeaderboardEntries();
+            bool globalLeaderboardEntries = iLeaderboard.GetAllGlobalEntries();
             if(globalLeaderboardEntries)
             {
-                foreach(ILeaderboardEntry entry in iLeaderboardEntry.GlobalEntries)
-                {
-                    viewModel.GlobalLeaderboardEntries.Add(new LeaderboardEntryViewModel(entry.ID, entry.GlobalPosition, entry.Score, entry.Username));
-                }
+                viewModel.GlobalLeaderboardEntries = iLeaderboard.GlobalEntries;
 
                 if (userID >= 0)
                 {
-                    bool personalLeaderboardEntries = iLeaderboardEntry.GetAllPersonalLeaderboardEntries(userID);
+                    bool personalLeaderboardEntries = iLeaderboard.GetPersonalEntriesByUserID(userID);
                     if(personalLeaderboardEntries)
                     {
-                        foreach(ILeaderboardEntry entry in iLeaderboardEntry.PersonalEntries)
-                        {
-                            viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(entry.ID, entry.GlobalPosition, entry.Score, entry.Username));
-                        }
+                        viewModel.PersonalLeaderboardEntries = iLeaderboard.PersonalEntries;
                     }
                 }
             }

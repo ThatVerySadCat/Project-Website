@@ -33,22 +33,6 @@ namespace LogicInterfaces
             set;
         }
         /// <summary>
-        /// A list of global leaderboard entries.
-        /// </summary>
-        List<ILeaderboardEntry> GlobalEntries
-        {
-            get;
-            set;
-        }
-        /// <summary>
-        /// A list of leaderboard entries belonging to a specific user.
-        /// </summary>
-        List<ILeaderboardEntry> PersonalEntries
-        {
-            get;
-            set;
-        }
-        /// <summary>
         /// The username of the user that made the entry.
         /// </summary>
         string Username
@@ -56,17 +40,5 @@ namespace LogicInterfaces
             get;
             set;
         }
-
-        /// <summary>
-        /// Fills the GlobalEntries property with all leaderboard entries and returns true. Returns false if there are no entries.
-        /// </summary>
-        /// <returns></returns>
-        bool GetAllGlobalLeaderboardEntries();
-        /// <summary>
-        /// Gets the leaderboard entries belonging to the user with the given userID and returns true. Returns false if there are no entries.
-        /// </summary>
-        /// <param name="userID">The ID of the user whose leaderboard entries to find.</param>
-        /// <returns></returns>
-        bool GetAllPersonalLeaderboardEntries(int userID);
     }
 }

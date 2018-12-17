@@ -1,1 +1,11 @@
-﻿
+﻿.leaderboard-entry-score-row{
+    margin-top:10px;
+}
+
+.leaderboard-entry{
+    height:98px !important;
+}
+
+.leaderboards-row{
+    height:486px;
+}

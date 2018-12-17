@@ -1,4 +1,4 @@
-﻿@using Project___Website.Models
+﻿@using LogicInterfaces;
 
 @{
     ViewBag.Title = "Bestiary";
@@ -17,8 +17,16 @@
     <!-- Enemy Information -->
     <div class="card col-sm-8">
         <div class="card-body">
-            <h5 class="card-title enemy-name">@Model.ActiveEnemy.Name</h5>
-            <a class="card-text user-text enemy-creator-name" href="/Account/AccountInfo/@Model.ActiveEnemy.CreatorID">@Model.ActiveEnemy.CreatorName</a>
+            @if (Model.SelectedEnemy != null)
+            {
+                <h5 class="card-title enemy-name">@Model.SelectedEnemy.Name</h5>
+                <a class="card-text user-text enemy-creator-name" href="/Account/AccountInfo/@Model.SelectedEnemy.CreatorID">@Model.SelectedEnemy.CreatorName</a>
+            }
+            else
+            {
+                <h5 class="card-title enemy-name">-</h5>
+                <a class="card-text user-text enemy-creator-name" href="#">-</a>
+            }
             <hr />
             <div class="col-sm-12">
                 <div id="gameContainer" hidden></div>
@@ -40,22 +48,22 @@
 
             <!-- The list of enemies and their creator users -->
             <div class="list-group list-group-flush list-set-height bestiary-list-group">
-                @foreach (EnemyViewModel enemy in Model.Enemies)
+                @foreach (IEnemy iEnemy in Model.Enemies)
                 {
-                    if (enemy.ID == Model.ActiveEnemy.ID)
+                    if (iEnemy.ID == Model.SelectedEnemy.ID)
                     {
                         <button type="button" class="btn-tall list-group-item list-group-item-action enemy-btn active">
-                            <h6>@enemy.Name</h6>
-                            <b>@enemy.CreatorName</b>
-                            <p class="enemy-id" hidden>@enemy.ID</p>
+                            <h6>@iEnemy.Name</h6>
+                            <b>@iEnemy.CreatorName</b>
+                            <p class="enemy-id" hidden>@iEnemy.ID</p>
                         </button>
                     }
                     else
                     {
                         <button type="button" class="btn-tall list-group-item list-group-item-action enemy-btn">
-                            <h6>@enemy.Name</h6>
-                            <b>@enemy.CreatorName</b>
-                            <p class="enemy-id" hidden>@enemy.ID</p>
+                            <h6>@iEnemy.Name</h6>
+                            <b>@iEnemy.CreatorName</b>
+                            <p class="enemy-id" hidden>@iEnemy.ID</p>
                         </button>
                     }
                 }

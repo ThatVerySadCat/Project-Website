@@ -27,22 +27,6 @@ namespace Logic
             set;
         }
         /// <summary>
-        /// A currently selected user.
-        /// </summary>
-        public IUser SelectedUser
-        {
-            get;
-            set;
-        }
-        /// <summary>
-        /// A list of users.
-        /// </summary>
-        public List<IUser> Users
-        {
-            get;
-            set;
-        }
-        /// <summary>
         /// The name of the user.
         /// </summary>
         public string Name
@@ -60,7 +44,6 @@ namespace Logic
         public User()
         {
             ID = -1;
-            Users = new List<IUser>();
             Name = "";
         }
 
@@ -74,46 +57,9 @@ namespace Logic
         public User(int _id, string _name, string _password)
         {
             ID = _id;
-            Users = new List<IUser>();
             Name = _name;
 
             password = _password;
-        }
-
-        /// <summary>
-        /// Fills the Users property with all users and then returns true. Returns false if no users could be found.
-        /// </summary>
-        /// <returns></returns>
-        public bool GetAllUsers()
-        {
-            // Get all user data from the DAL here and put it in the Users list
-            if (hardCodedUsers.Length > 0)
-            {
-                Users = new List<IUser>(3);
-                Users.AddRange(hardCodedUsers);
-
-                return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Sets the SelectedUser property to the user with the given id and return true. Returns false if the user could not be found.
-        /// </summary>
-        /// <param name="id">The ID of the user to find.</param>
-        /// <returns></returns>
-        public bool GetUserDataByID(int id)
-        {
-            IUser iUser = hardCodedUsers.Where(user => user.ID == id).FirstOrDefault();
-            if(iUser != null)
-            {
-                SelectedUser = iUser;
-
-                return true;
-            }
-
-            return false;
         }
 
         /// <summary>

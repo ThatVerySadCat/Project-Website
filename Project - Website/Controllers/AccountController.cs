@@ -13,50 +13,41 @@ namespace Project___Website.Controllers
 {
     public class AccountController : Controller
     {
-        private IEnemy iEnemy = EnemyFactory.CreateEnemyInterface();
-        private ILeaderboardEntry iLeaderboardEntry = LeaderboardEntryFactory.CreateLeaderboardInterface();
+        private IEnemyCollection iEnemyCollection = EnemyCollectionFactory.CreateEnemyCollectionInterface();
+        private ILeaderboard iLeaderboard = LeaderboardFactory.CreateLeaderboardInterface();
         private IUser iUser = UserFactory.CreateUserInterface();
+        private IUserCollection iUserCollection = UserCollectionFactory.CreateUserCollectionInterface();
 
         // An ID parameter needs to be added to allow for a specific user to be found
         [HttpGet()]
         public ActionResult AccountInfo(int id = 0)
         {
             // This is all sample data that should be retrieved from the database using the ID parameter
-            bool userFound = iUser.GetUserDataByID(id);
+            bool userFound = iUserCollection.GetUserByID(id);
             if(userFound)
             {
-                AccountViewModel viewModel = new AccountViewModel();
+                AccountInfoViewModel viewModel = new AccountInfoViewModel();
 
-                IUser selectedUser = iUser.SelectedUser;
-                viewModel.ID = selectedUser.ID;
-                viewModel.Username = selectedUser.Name;
+                viewModel.User = iUserCollection.SelectedUser;
 
-                bool personalEntriesFound = iLeaderboardEntry.GetAllPersonalLeaderboardEntries(selectedUser.ID);
+                bool personalEntriesFound = iLeaderboard.GetPersonalEntriesByUserID(viewModel.User.ID);
                 if (personalEntriesFound)
                 {
-                    viewModel.PersonalLeaderboardEntries = new List<LeaderboardEntryViewModel>(iLeaderboardEntry.PersonalEntries.Count);
-                    foreach (ILeaderboardEntry iEntry in iLeaderboardEntry.PersonalEntries)
-                    {
-                        viewModel.PersonalLeaderboardEntries.Add(new LeaderboardEntryViewModel(iEntry.ID, iEntry.GlobalPosition, iEntry.Score, iEntry.Username));
-                    }
+                    viewModel.PersonalLeaderboardEntries = iLeaderboard.PersonalEntries;
                 }
                 else
                 {
-                    viewModel.PersonalLeaderboardEntries = new List<LeaderboardEntryViewModel>();
+                    viewModel.PersonalLeaderboardEntries = new List<ILeaderboardEntry>();
                 }
 
-                bool personalEnemiesFound = iEnemy.GetEnemiesByUserID(selectedUser.ID);
+                bool personalEnemiesFound = iEnemyCollection.GetEnemiesByUserID(viewModel.User.ID);
                 if(personalEnemiesFound)
                 {
-                    viewModel.PersonalEnemies = new List<EnemyViewModel>(iEnemy.Enemies.Count);
-                    foreach(IEnemy enemy in iEnemy.Enemies)
-                    {
-                        viewModel.PersonalEnemies.Add(new EnemyViewModel(enemy.CreatorID, enemy.ID, enemy.CreatorName, enemy.Name));
-                    }
+                    viewModel.PersonalEnemies = iEnemyCollection.Enemies;
                 }
                 else
                 {
-                    viewModel.PersonalEnemies = new List<EnemyViewModel>();
+                    viewModel.PersonalEnemies = new List<IEnemy>();
                 }
 
                 return View(viewModel);
@@ -69,9 +60,9 @@ namespace Project___Website.Controllers
         [HttpGet()]
         public ActionResult Login(string username = "")
         {
-            LoginRegisterViewModel viewModel = new LoginRegisterViewModel();
-            viewModel.Username = username;
-            viewModel.HasError = false;
+            LoginViewModel viewModel = new LoginViewModel();
+            viewModel.Name = username;
+            viewModel.HasFailed = false;
 
             return View(viewModel);
         }
@@ -90,9 +81,9 @@ namespace Project___Website.Controllers
                 return RedirectToAction("AccountInfo", "Account", new { iUser.ID });
             }
 
-            LoginRegisterViewModel viewModel = new LoginRegisterViewModel();
-            viewModel.Username = username;
-            viewModel.HasError = true;
+            LoginViewModel viewModel = new LoginViewModel();
+            viewModel.Name = username;
+            viewModel.HasFailed = true;
 
             return View(viewModel);
         }
@@ -108,9 +99,9 @@ namespace Project___Website.Controllers
         [HttpGet()]
         public ActionResult Register()
         {
-            LoginRegisterViewModel viewModel = new LoginRegisterViewModel();
-            viewModel.Username = "";
-            viewModel.HasError = false;
+            RegisterViewModel viewModel = new RegisterViewModel();
+            viewModel.Name = "";
+            viewModel.HasFailed = false;
 
             return View(viewModel);
         }
@@ -122,9 +113,9 @@ namespace Project___Website.Controllers
             bool registerSuccess = iUser.Register(username, password);
             if (!registerSuccess)
             {
-                LoginRegisterViewModel viewModel = new LoginRegisterViewModel();
-                viewModel.Username = username;
-                viewModel.HasError = true;
+                RegisterViewModel viewModel = new RegisterViewModel();
+                viewModel.Name = username;
+                viewModel.HasFailed = true;
 
                 return View(viewModel);
             }
