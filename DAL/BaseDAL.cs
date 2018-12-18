@@ -20,7 +20,11 @@ namespace DAL
         /// The connection string to use.
         /// </summary>
         private const string connectionString = "Server = mssql.fhict.local; Database = dbi343405; User Id = dbi343405; Password = Pat5W-icqt;";
-        
+        /// <summary>
+        /// The connection string to use for unit/integration tests.
+        /// </summary>
+        private const string testConnectionString = "Server = localhost; Database = dbi343405Test; Trusted_Connection = true;";
+
         public BaseDAL() { }
 
         /// <summary>
