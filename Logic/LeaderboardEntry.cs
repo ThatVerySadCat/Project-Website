@@ -46,11 +46,12 @@ namespace Logic
         public LeaderboardEntry() { }
 
         /// <summary>
-        /// THIS CONSTRUCTOR EXISTS FOR TESTING PURPOSES ONLY!
-        /// PLEASE REMOVE ASAP!
+        /// 
         /// </summary>
-        /// <param name="_score"></param>
-        /// <param name="_username"></param>
+        /// <param name="_globalPosition">The position of the entry on the global leaderboard.</param>
+        /// <param name="_id">The ID of the user that made the entry.</param>
+        /// <param name="_score">The score that is ascociated with the entry.</param>
+        /// <param name="_username">The name of the user that made the entry.</param>
         public LeaderboardEntry(int _globalPosition, int _id, int _score, string _username)
         {
             GlobalPosition = _globalPosition;

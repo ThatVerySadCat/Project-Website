@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountFactory.cs" />
     <Compile Include="EnemyCollectionFactory.cs" />
     <Compile Include="EnemyFactory.cs" />
     <Compile Include="LeaderboardEntryFactory.cs" />

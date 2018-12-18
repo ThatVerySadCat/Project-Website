@@ -13,16 +13,15 @@ namespace Project___Website.Controllers
 {
     public class AccountController : Controller
     {
+        private IAccount iAccount = AccountFactory.CreateAccountInterface();
         private IEnemyCollection iEnemyCollection = EnemyCollectionFactory.CreateEnemyCollectionInterface();
         private ILeaderboard iLeaderboard = LeaderboardFactory.CreateLeaderboardInterface();
         private IUser iUser = UserFactory.CreateUserInterface();
         private IUserCollection iUserCollection = UserCollectionFactory.CreateUserCollectionInterface();
-
-        // An ID parameter needs to be added to allow for a specific user to be found
+        
         [HttpGet()]
         public ActionResult AccountInfo(int id = 0)
         {
-            // This is all sample data that should be retrieved from the database using the ID parameter
             bool userFound = iUserCollection.GetUserByID(id);
             if(userFound)
             {
@@ -54,6 +53,7 @@ namespace Project___Website.Controllers
             }
 
             // GOTO ERROR PAGE
+            // User could not be found
             return RedirectToAction("Error", "Error", new { /* Error Message */ });
         }
 
@@ -70,15 +70,14 @@ namespace Project___Website.Controllers
         [HttpPost()]
         public ActionResult Login(string username, string password)
         {
-            // Hand username and password over to the Logic layer who checks if the data is correct (together with the DAL)
-            bool loginSuccess = iUser.Login(username, password);
+            bool loginSuccess = iAccount.Login(username, password);
 
             if(loginSuccess)
             {
-                Session["UserID"] = iUser.ID;
-                Session["UserName"] = iUser.Name;
+                Session["UserID"] = iAccount.LoggedInUser.ID;
+                Session["UserName"] = iAccount.LoggedInUser.Name;
 
-                return RedirectToAction("AccountInfo", "Account", new { iUser.ID });
+                return RedirectToAction("AccountInfo", "Account", new { iAccount.LoggedInUser.ID });
             }
 
             LoginViewModel viewModel = new LoginViewModel();
@@ -109,8 +108,7 @@ namespace Project___Website.Controllers
         [HttpPost()]
         public ActionResult Register(string username, string password)
         {
-            // Send the given username and password to the logic here to try and create an account
-            bool registerSuccess = iUser.Register(username, password);
+            bool registerSuccess = iAccount.Register(username, password);
             if (!registerSuccess)
             {
                 RegisterViewModel viewModel = new RegisterViewModel();
@@ -126,7 +124,7 @@ namespace Project___Website.Controllers
         [HttpPost()]
         public JsonResult IsUsernameAvailable(string username)
         {
-            bool returnValue = iUser.IsUsernameAvailable(username);
+            bool returnValue = iAccount.IsUsernameAvailable(username);
             return Json(returnValue, JsonRequestBehavior.AllowGet);
         }
     }

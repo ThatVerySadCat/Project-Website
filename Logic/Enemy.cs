@@ -46,13 +46,12 @@ namespace Logic
         public Enemy() { }
 
         /// <summary>
-        /// THIS CONSTRUCTOR HAS BEEN MADE FOR TESTING PURPOSES!
-        /// REMOVE ASAP!
+        /// 
         /// </summary>
-        /// <param name="_creatorID"></param>
-        /// <param name="_id"></param>
-        /// <param name="_creatorName"></param>
-        /// <param name="_name"></param>
+        /// <param name="_creatorID">The ID of the user who made the enemy.</param>
+        /// <param name="_id">The ID of the enemy.</param>
+        /// <param name="_creatorName">The name of the user who made the enemy.</param>
+        /// <param name="_name">The name of the enemy.</param>
         public Enemy(int _creatorID, int _id, string _creatorName, string _name)
         {
             CreatorID = _creatorID;

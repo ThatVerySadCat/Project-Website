@@ -9,6 +9,14 @@ namespace Structs
     public struct EnemyData
     {
         /// <summary>
+        /// The ID of the user who created the enemy.
+        /// </summary>
+        public int CreatorID
+        {
+            get;
+            private set;
+        }
+        /// <summary>
         /// A number indicating the difficulty of the enemy.
         /// </summary>
         public int Difficulty
@@ -33,8 +41,9 @@ namespace Structs
             private set;
         }
 
-        public EnemyData(int _difficulty, int _id, string _name)
+        public EnemyData(int _creatorID, int _difficulty, int _id, string _name)
         {
+            CreatorID = _creatorID;
             Difficulty = _difficulty;
             ID = _id;
             Name = _name;

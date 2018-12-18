@@ -25,9 +25,9 @@ namespace Structs
             private set;
         }
         /// <summary>
-        /// The name of the user who achieved the score.
+        /// The ID of the user who made the entry.
         /// </summary>
-        public string Username
+        public int UserID
         {
             get;
             private set;
@@ -38,12 +38,12 @@ namespace Structs
         /// </summary>
         /// <param name="_position">The position of the entry on the global leaderboard.</param>
         /// <param name="_score">The amount of score obtained.</param>
-        /// <param name="_username">The name of the user who achieved the score.</param>
-        public ScoreData(int _position, int _score, string _username)
+        /// <param name="_userID">The ID of the user who made the entry.</param>
+        public ScoreData(int _position, int _score, int _userID)
         {
             Position = _position;
             Score = _score;
-            Username = _username;
+            UserID = _userID;
         }
     }
 }

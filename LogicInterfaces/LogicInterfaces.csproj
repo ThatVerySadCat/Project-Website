@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAccount.cs" />
     <Compile Include="IEnemy.cs" />
     <Compile Include="IEnemyCollection.cs" />
     <Compile Include="ILeaderboard.cs" />

@@ -4,23 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using DALFactory;
+using DALInterfaces;
 using LogicInterfaces;
+
+using Structs;
 
 namespace Logic
 {
     public class EnemyCollection : IEnemyCollection
     {
-        // HARD CODED DATA! REMOVE ASAP!
-        private static IEnemy[] hardCodedEnemies = new IEnemy[] {
-            new Enemy(0, 0, "TestName", "TestEnemy1"),
-            new Enemy(0, 1, "TestName", "TestEnemy2"),
-            new Enemy(0, 2, "TestName", "TestEnemy3"),
-            new Enemy(0, 3, "TestName", "TestEnemy4"),
-            new Enemy(1, 4, "AppleMan", "TestEnemy5"),
-            new Enemy(1, 5, "AppleMan", "TestEnemy6"),
-            new Enemy(2, 6, "EAPFan69", "TestEnemy7") };
-        // HARD CODED DATA! REMOVE ASAP!
-
         /// <summary>
         /// A single IEnemy interface.
         /// </summary>
@@ -30,14 +23,29 @@ namespace Logic
         /// </summary>
         public List<IEnemy> Enemies { get; set; }
 
+        private IEnemyDAL iEnemyDAL = EnemyDALFactory.CreateEnemyDALInterface();
+        private IUserDAL iUserDAL = UserDALFactory.CreateUserDALInterface();
+
         /// <summary>
         /// Fills the Enemies property with available enemy data and returns true. Returns false if no enemy data could be found.
         /// </summary>
         /// <returns></returns>
         public bool GetAllEnemies()
         {
-            // Get Enemy Data from DAL here.
-            Enemies = new List<IEnemy>(hardCodedEnemies);
+            List<EnemyData> enemyDatas = iEnemyDAL.GetAllEnemyDatas();
+            Enemies = new List<IEnemy>(enemyDatas.Count);
+            foreach(EnemyData enemyData in enemyDatas)
+            {
+                try
+                {
+                    UserData creatorData = iUserDAL.GetUserDataByID(enemyData.CreatorID);
+                    Enemies.Add(new Enemy(creatorData.ID, enemyData.ID, creatorData.Name, enemyData.Name));
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
 
             return true;
         }
@@ -49,14 +57,22 @@ namespace Logic
         /// <returns></returns>
         public bool GetEnemiesByUserID(int userID)
         {
-            // Get Enemy Data with specific CreatorID from DAL here.
-            Enemies = hardCodedEnemies.Where(x => x.CreatorID == userID).ToList();
-            if(Enemies != null && Enemies.Count > 0)
+            List<EnemyData> enemyDatas = iEnemyDAL.GetEnemyDatasByUserID(userID);
+            Enemies = new List<IEnemy>(enemyDatas.Count);
+            foreach(EnemyData enemyData in enemyDatas)
             {
-                return true;
+                try
+                {
+                    UserData userData = iUserDAL.GetUserDataByID(userID);
+                    Enemies.Add(new Enemy(enemyData.CreatorID, enemyData.ID, userData.Name, enemyData.Name));
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
 
-            return false;
+            return true;
         }
 
         /// <summary>
@@ -66,11 +82,15 @@ namespace Logic
         /// <returns></returns>
         public bool GetEnemyByID(int enemyID)
         {
-            SelectedEnemy = hardCodedEnemies.Where(x => x.ID == enemyID).FirstOrDefault();
-            if(SelectedEnemy != null)
+            try
             {
+                EnemyData enemyData = iEnemyDAL.GetEnemyDataByID(enemyID);
+                UserData userData = iUserDAL.GetUserDataByID(enemyData.CreatorID);
+                SelectedEnemy = new Enemy(enemyData.CreatorID, enemyData.ID, userData.Name, enemyData.Name);
+
                 return true;
             }
+            catch (ArgumentException) { }
 
             return false;
         }

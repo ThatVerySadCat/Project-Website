@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="EnemyCollection.cs" />
     <Compile Include="Leaderboard.cs" />
@@ -50,6 +51,14 @@
     <Compile Include="UserCollection.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DALFactory\DALFactory.csproj">
+      <Project>{e6ba5c53-7406-4623-8ad9-0c930cd650f0}</Project>
+      <Name>DALFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALInterfaces\DALInterfaces.csproj">
+      <Project>{33fca59f-5789-4a53-bb5c-a37a38410d96}</Project>
+      <Name>DALInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LogicInterfaces\LogicInterfaces.csproj">
       <Project>{095f4b13-4b24-4ff6-96b6-c9e69bf767c0}</Project>
       <Name>LogicInterfaces</Name>
