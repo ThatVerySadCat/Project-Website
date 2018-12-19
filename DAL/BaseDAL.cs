@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -13,17 +14,9 @@ namespace DAL
     {
         /// <summary>
         /// The object used to hold the connection.
+        /// Can have its connection string changed, in the class itself, to use the test database.
         /// </summary>
-        private SqlConnection connection = new SqlConnection(connectionString);
-
-        /// <summary>
-        /// The connection string to use.
-        /// </summary>
-        private const string connectionString = "Server = mssql.fhict.local; Database = dbi343405; User Id = dbi343405; Password = Pat5W-icqt;";
-        /// <summary>
-        /// The connection string to use for unit/integration tests.
-        /// </summary>
-        private const string testConnectionString = "Server = localhost; Database = dbi343405Test; Trusted_Connection = true;";
+        private SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
         public BaseDAL() { }
 

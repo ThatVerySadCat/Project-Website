@@ -45,5 +45,13 @@ namespace Project___Website.Controllers
             
             return View(viewModel);
         }
+
+        [HttpGet()]
+        public ActionResult Stats()
+        {
+            StatsViewModel viewModel = new StatsViewModel();
+
+            return View(viewModel);
+        }
     }
 }

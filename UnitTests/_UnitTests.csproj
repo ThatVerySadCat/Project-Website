@@ -53,8 +53,10 @@
     <Compile Include="EnemyDALTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LeaderboardDALTests.cs" />
+    <Compile Include="StatisticsDALTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
