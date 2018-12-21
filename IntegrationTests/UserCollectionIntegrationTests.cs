@@ -28,7 +28,7 @@ namespace IntegrationTests
 
             userCollection.GetAllUsers();
 
-            Assert.AreEqual(5, userCollection.Users.Count);
+            Assert.AreEqual(7, userCollection.Users.Count);
         }
 
         [TestMethod]

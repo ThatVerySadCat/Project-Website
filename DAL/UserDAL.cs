@@ -22,7 +22,7 @@ namespace DAL
         /// <returns></returns>
         public bool RegisterNewUser(string username, string password)
         {
-            WriteQuery("INSERT INTO [User] (Username, Password, ScorePointsCurrency) VALUES ('" + username + "', '" + password + "', 0)");
+            WriteQuery("INSERT INTO [User] (Username, Password, ScorePointsCurrency) VALUES (@username, @password, 0)", new DALParameters(username, "@username"), new DALParameters(password, "@password"));
 
             return true;
         }
@@ -33,7 +33,7 @@ namespace DAL
         /// <returns></returns>
         public List<UserData> GetAllUserDatas()
         {
-            DataTable table = ReadQuery("SELECT * FROM [User]");
+            DataTable table = ReadQuery("GetAllUserData");
             List<UserData> returnList = new List<UserData>(table.Rows.Count);
             foreach (DataRow row in table.Rows)
             {
@@ -53,7 +53,7 @@ namespace DAL
         /// <returns></returns>
         public UserData GetUserDataByID(int userID)
         {
-            DataTable table = ReadQuery("SELECT * FROM [User] WHERE UserID = " + userID);
+            DataTable table = ReadQuery("GetUserDataByID @userID", new DALParameters(userID, "@userID"));
             if(table != null && table.Rows.Count > 0)
             {
                 string userName = (string)table.Rows[0]["Username"];
@@ -70,7 +70,7 @@ namespace DAL
         /// <returns></returns>
         public UserData GetUserDataByUsername(string username)
         {
-            DataTable table = ReadQuery("SELECT * FROM [User] WHERE Username = '" + username + "'");
+            DataTable table = ReadQuery("GetUserDataByUsername @username", new DALParameters(username, "@username"));
             if(table != null && table.Rows.Count > 0)
             {
                 int id = (int)table.Rows[0]["UserID"];
@@ -88,7 +88,7 @@ namespace DAL
         /// <returns></returns>
         public UserData GetUserDataByUsernameAndPassword(string username, string password)
         {
-            DataTable table = ReadQuery("SELECT * FROM [User] WHERE Username = '" + username + "' AND Password = '" + password + "'");
+            DataTable table = ReadQuery("GetUserDataByUsernameAndPassword @username, @password", new DALParameters(username, "@username"), new DALParameters(password, "@password"));
             if(table != null && table.Rows.Count > 0)
             {
                 int id = (int)table.Rows[0]["UserID"];

@@ -20,7 +20,7 @@ namespace DAL
         /// <returns></returns>
         public List<ScoreData> GetAllScoreDatas()
         {
-            DataTable table = ReadQuery("SELECT * FROM LeaderboardEntry ORDER BY Score DESC");
+            DataTable table = ReadQuery("GetAllScoreData");
             if(table != null && table.Rows.Count > 0)
             {
                 List<ScoreData> returnList = new List<ScoreData>(table.Rows.Count);
@@ -47,7 +47,7 @@ namespace DAL
         /// <returns></returns>
         public List<ScoreData> GetScoreDataByUserID(int userID)
         {
-            DataTable table = ReadQuery("SELECT * FROM LeaderboardEntry ORDER BY Score DESC");
+            DataTable table = ReadQuery("GetAllScoreData");
             if(table != null)
             {
                 List<ScoreData> returnList = new List<ScoreData>();

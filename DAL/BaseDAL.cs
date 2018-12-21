@@ -25,7 +25,7 @@ namespace DAL
         /// </summary>
         /// <param name="query">The SQL query to use.</param>
         /// <returns></returns>
-        protected DataTable ReadQuery(string query)
+        protected DataTable ReadQuery(string query, params DALParameters[] dalParameters)
         {
             DataTable returnTable = null;
 
@@ -34,6 +34,10 @@ namespace DAL
                 connection.Open();
 
                 SqlCommand cmd = new SqlCommand(query, connection);
+                foreach (DALParameters dalParameter in dalParameters)
+                {
+                    cmd.Parameters.AddWithValue(dalParameter.ParameterName, dalParameter.Value);
+                }
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 returnTable = new DataTable();
@@ -56,7 +60,7 @@ namespace DAL
         /// </summary>
         /// <param name="query">The SQL query to use.</param>
         /// <returns></returns>
-        protected int WriteQuery(string query)
+        protected int WriteQuery(string query, params DALParameters[] dalParameters)
         {
             int rowsAffected = -1;
 
@@ -65,6 +69,10 @@ namespace DAL
                 connection.Open();
 
                 SqlCommand cmd = new SqlCommand(query, connection);
+                foreach(DALParameters dalParameter in dalParameters)
+                {
+                    cmd.Parameters.AddWithValue(dalParameter.ParameterName, dalParameter.Value);
+                }
                 rowsAffected = cmd.ExecuteNonQuery();
 
                 connection.Close();

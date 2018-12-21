@@ -18,7 +18,7 @@ namespace UnitTests
 
             List<ScoreData> scoreDatas = leaderboardDAL.GetAllScoreDatas();
 
-            Assert.AreEqual(12, scoreDatas.Count);
+            Assert.AreEqual(13, scoreDatas.Count);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace DAL
         /// <returns></returns>
         public EnemyData GetEnemyDataByID(int enemyID)
         {
-            DataTable table = ReadQuery("SELECT * FROM Enemy WHERE EnemyID = " + enemyID);
+            DataTable table = ReadQuery("GetEnemyByID @enemyID", new DALParameters(enemyID, "@enemyID"));
             if (table.Rows.Count > 0)
             {
                 int creatorID = (int)table.Rows[0]["UserID"];
@@ -41,7 +41,7 @@ namespace DAL
         /// <returns></returns>
         public List<EnemyData> GetAllEnemyDatas()
         {
-            DataTable table = ReadQuery("SELECT * FROM Enemy");
+            DataTable table = ReadQuery("GetAllEnemyData");
 
             List<EnemyData> returnList = new List<EnemyData>(table.Rows.Count);
             foreach(DataRow row in table.Rows)
@@ -64,7 +64,7 @@ namespace DAL
         /// <returns></returns>
         public List<EnemyData> GetEnemyDatasByUserID(int userID)
         {
-            DataTable table = ReadQuery("SELECT * FROM Enemy WHERE UserID = " + userID);
+            DataTable table = ReadQuery("GetEnemyDataByUserID @userID", new DALParameters(userID, "@userID"));
 
             List<EnemyData> returnList = new List<EnemyData>(table.Rows.Count);
             foreach (DataRow row in table.Rows)

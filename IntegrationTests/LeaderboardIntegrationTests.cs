@@ -28,7 +28,7 @@ namespace IntegrationTests
 
             leaderboard.GetAllGlobalEntries();
 
-            Assert.AreEqual(12, leaderboard.GlobalEntries.Count);
+            Assert.AreEqual(13, leaderboard.GlobalEntries.Count);
         }
 
         [TestMethod]
@@ -48,7 +48,7 @@ namespace IntegrationTests
 
             leaderboard.GetPersonalEntriesByUserID(0);
 
-            Assert.AreEqual(6, leaderboard.PersonalEntries.Count);
+            Assert.AreEqual(7, leaderboard.PersonalEntries.Count);
         }
     }
 }
