@@ -48,7 +48,6 @@
     <Compile Include="EnemyDAL.cs" />
     <Compile Include="LeaderboardDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatisticsDAL.cs" />
     <Compile Include="UserDAL.cs" />
   </ItemGroup>
   <ItemGroup>
