@@ -17,10 +17,6 @@ namespace Logic
         /// A list of IUser interfaces.
         /// </summary>
         public List<IUser> Users { get; set; }
-        /// <summary>
-        /// A single IUser interface.
-        /// </summary>
-        public IUser SelectedUser { get; set; }
 
         private IUserDAL iUserDAL = UserDALFactory.CreateUserDALInterface();
 
@@ -43,25 +39,6 @@ namespace Logic
 
                     return true;
                 }
-            }
-            catch (Exception) { }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Sets the SelectedUser property to the user data of the user with the given userID and returns true. Returns false if the user with the given userID could not be found.
-        /// </summary>
-        /// <param name="userID">The ID to search by.</param>
-        /// <returns></returns>
-        public bool GetUserByID(int id)
-        {
-            try
-            {
-                UserData userData = iUserDAL.GetUserDataByID(id);
-                SelectedUser = new User(userData.ID, userData.Name);
-
-                return true;
             }
             catch (Exception) { }
 

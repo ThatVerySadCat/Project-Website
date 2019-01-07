@@ -22,12 +22,12 @@ namespace Project___Website.Controllers
         [HttpGet()]
         public ActionResult AccountInfo(int id = 0)
         {
-            bool userFound = iUserCollection.GetUserByID(id);
+            bool userFound = iUser.GetUserByID(id);
             if(userFound)
             {
                 AccountInfoViewModel viewModel = new AccountInfoViewModel();
 
-                viewModel.User = iUserCollection.SelectedUser;
+                viewModel.User = iUser;
 
                 bool personalEntriesFound = iLeaderboard.GetPersonalEntriesByUserID(viewModel.User.ID);
                 if (personalEntriesFound)

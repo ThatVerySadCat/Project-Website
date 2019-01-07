@@ -53,6 +53,7 @@
     <Compile Include="EnemyCollectionIntegrationTests.cs" />
     <Compile Include="LeaderboardIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserIntegrationTests.cs" />
     <Compile Include="UserCollectionIntegrationTests.cs" />
   </ItemGroup>
   <ItemGroup>

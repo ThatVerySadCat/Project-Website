@@ -30,25 +30,5 @@ namespace IntegrationTests
 
             Assert.AreEqual(7, userCollection.Users.Count);
         }
-
-        [TestMethod]
-        public void GetUserByIDTest()
-        {
-            UserCollection userCollection = new UserCollection();
-
-            bool actual = userCollection.GetUserByID(0);
-
-            Assert.AreEqual(true, actual);
-        }
-
-        [TestMethod]
-        public void GetUserByIDNameTest()
-        {
-            UserCollection userCollection = new UserCollection();
-
-            userCollection.GetUserByID(0);
-
-            Assert.AreEqual("TestName", userCollection.SelectedUser.Name);
-        }
     }
 }

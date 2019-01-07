@@ -24,5 +24,12 @@ namespace LogicInterfaces
             get;
             set;
         }
+
+        /// <summary>
+        /// Sets the properties to the one of the given userID and returns true. Returns false if the user with the given userID could not be found.
+        /// </summary>
+        /// <param name="userID">The ID to search by.</param>
+        /// <returns></returns>
+        bool GetUserByID(int userID);
     }
 }
