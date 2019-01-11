@@ -21,20 +21,13 @@ namespace Project___Website.Controllers
             BestiaryViewModel viewModel = new BestiaryViewModel();
 
             bool enemyFound = iEnemyCollection.GetEnemyByID(id);
-            if(enemyFound)
+            if (enemyFound)
             {
                 viewModel.SelectedEnemy = iEnemyCollection.SelectedEnemy;
             }
 
             bool enemiesFound = iEnemyCollection.GetAllEnemies();
-            if(enemiesFound)
-            {
-                viewModel.Enemies = iEnemyCollection.Enemies;
-            }
-            else
-            {
-                viewModel.Enemies = new List<IEnemy>();
-            }
+            viewModel.Enemies = iEnemyCollection.Enemies;
 
             return View(viewModel);
         }
@@ -43,7 +36,7 @@ namespace Project___Website.Controllers
         public JsonResult SwitchActiveEnemy(int id)
         {
             bool enemyFound = iEnemyCollection.GetEnemyByID(id);
-            if(enemyFound)
+            if (enemyFound)
             {
                 return Json(iEnemyCollection.SelectedEnemy, JsonRequestBehavior.AllowGet);
             }

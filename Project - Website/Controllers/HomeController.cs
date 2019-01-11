@@ -35,11 +35,8 @@ namespace Project___Website.Controllers
 
                 if (userID >= 0)
                 {
-                    bool leaderboardEntriesFound = iLeaderboard.GetPersonalEntriesByUserID(userID);
-                    if (leaderboardEntriesFound)
-                    {
-                        viewModel.PersonalLeaderboardEntries = iLeaderboard.PersonalEntries;
-                    }
+                    iLeaderboard.GetPersonalEntriesByUserID(userID);
+                    viewModel.PersonalLeaderboardEntries = iLeaderboard.PersonalEntries;
                 }
             }
             

@@ -18,36 +18,22 @@ namespace Project___Website.Controllers
         private ILeaderboard iLeaderboard = LeaderboardFactory.CreateLeaderboardInterface();
         private IUser iUser = UserFactory.CreateUserInterface();
         private IUserCollection iUserCollection = UserCollectionFactory.CreateUserCollectionInterface();
-        
+
         [HttpGet()]
         public ActionResult AccountInfo(int id = 0)
         {
             bool userFound = iUser.GetUserByID(id);
-            if(userFound)
+            if (userFound)
             {
                 AccountInfoViewModel viewModel = new AccountInfoViewModel();
 
                 viewModel.User = iUser;
 
-                bool personalEntriesFound = iLeaderboard.GetPersonalEntriesByUserID(viewModel.User.ID);
-                if (personalEntriesFound)
-                {
-                    viewModel.PersonalLeaderboardEntries = iLeaderboard.PersonalEntries;
-                }
-                else
-                {
-                    viewModel.PersonalLeaderboardEntries = new List<ILeaderboardEntry>();
-                }
+                iLeaderboard.GetPersonalEntriesByUserID(viewModel.User.ID);
+                viewModel.PersonalLeaderboardEntries = iLeaderboard.PersonalEntries;
 
-                bool personalEnemiesFound = iEnemyCollection.GetEnemiesByUserID(viewModel.User.ID);
-                if(personalEnemiesFound)
-                {
-                    viewModel.PersonalEnemies = iEnemyCollection.Enemies;
-                }
-                else
-                {
-                    viewModel.PersonalEnemies = new List<IEnemy>();
-                }
+                iEnemyCollection.GetEnemiesByUserID(viewModel.User.ID);
+                viewModel.PersonalEnemies = iEnemyCollection.Enemies;
 
                 return View(viewModel);
             }
@@ -72,7 +58,7 @@ namespace Project___Website.Controllers
         {
             bool loginSuccess = iAccount.Login(username, password);
 
-            if(loginSuccess)
+            if (loginSuccess)
             {
                 Session["UserID"] = iAccount.LoggedInUser.ID;
                 Session["UserName"] = iAccount.LoggedInUser.Name;

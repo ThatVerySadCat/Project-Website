@@ -19,7 +19,7 @@ namespace Project___Website.Controllers
         public ActionResult Leaderboards()
         {
             int userID = -1;
-            if(Session["UserID"] != null)
+            if (Session["UserID"] != null)
             {
                 userID = (int)Session["UserID"];
             }
@@ -29,17 +29,14 @@ namespace Project___Website.Controllers
             viewModel.PersonalLeaderboardEntries = new List<ILeaderboardEntry>();
 
             bool globalLeaderboardEntries = iLeaderboard.GetAllGlobalEntries();
-            if(globalLeaderboardEntries)
+            if (globalLeaderboardEntries)
             {
                 viewModel.GlobalLeaderboardEntries = iLeaderboard.GlobalEntries;
 
                 if (userID >= 0)
                 {
-                    bool personalLeaderboardEntries = iLeaderboard.GetPersonalEntriesByUserID(userID);
-                    if(personalLeaderboardEntries)
-                    {
-                        viewModel.PersonalLeaderboardEntries = iLeaderboard.PersonalEntries;
-                    }
+                    iLeaderboard.GetPersonalEntriesByUserID(userID);
+                    viewModel.PersonalLeaderboardEntries = iLeaderboard.PersonalEntries;
                 }
             }
 
